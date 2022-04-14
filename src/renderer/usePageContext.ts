@@ -12,7 +12,7 @@ const key = Symbol()
 
 function usePageContext() {
   const pageContext = inject(key)
-  return pageContext
+  return pageContext as PageContext
 }
 
 function setPageContext(app: App, pageContext: PageContext) {
