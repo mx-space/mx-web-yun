@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "jsx": "preserve",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "paths": {
       "~": [
         "./src"

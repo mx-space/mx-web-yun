@@ -1,36 +1,39 @@
 <script lang="ts" setup>
-import { useThemeConfig } from '~/composables/use-config'
+import {
+  useAggregateData,
+  useThemeConfig,
+} from '~/composables/use-page-context'
 
 const themeConfig = useThemeConfig()
+const aggregateData = useAggregateData()
+const user = aggregateData.user
+
+const avatar = user.avatar
 </script>
 
 <template>
   <div class="sidebar-panel">
     <div class="site-info" m="t-6">
       <a class="site-author-avatar" href="/about">
-        <img
-          class="rounded-full"
-          :src="themeConfig.author.avatar"
-          alt="avatar"
-        />
+        <img class="rounded-full" :src="avatar" alt="avatar" />
         <span class="site-author-status">{{
           themeConfig.author.status.emoji
         }}</span>
       </a>
       <div class="site-author-name">
         <a href="/about">
-          {{ themeConfig.author.name }}
+          {{ user.name }}
         </a>
       </div>
       <router-link to="/about/site" class="site-name">
-        {{ themeConfig.title }}
+        {{ aggregateData.seo.title }}
       </router-link>
 
-      <h4 v-if="themeConfig.subtitle" class="site-subtitle block" text="xs">
-        {{ themeConfig.subtitle }}
+      <h4 v-if="themeConfig.nav.subtitle" class="site-subtitle block" text="xs">
+        {{ themeConfig.nav.subtitle }}
       </h4>
-      <div v-if="themeConfig.description" class="site-description my-1">
-        {{ themeConfig.description }}
+      <div v-if="aggregateData.seo.description" class="site-description my-1">
+        {{ aggregateData.seo.description }}
       </div>
     </div>
 

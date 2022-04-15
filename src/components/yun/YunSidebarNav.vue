@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import { useThemeConfig } from '../../composables/use-config'
+import { useThemeConfig } from '~/composables/use-page-context'
 
 const { t } = useI18n()
 

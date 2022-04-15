@@ -6,7 +6,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "npm run server",
+    "dev": "NODE_ENV=development npm run server",
     "prod": "npm run build && npm run server:prod",
     "build": "vite build && vite build --ssr",
     "server": "ts-node ./server",

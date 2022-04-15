@@ -7,5 +7,7 @@ module.exports = {
     'antfu/if-newline': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     'operator-linebreak': 'off',
+    'space-before-function-paren': 'off',
+    'arrow-parens': 'off',
   },
 }

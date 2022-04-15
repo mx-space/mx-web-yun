@@ -171,13 +171,17 @@ const config: UserConfig = {
     proxy: {
       '/api': {
         target: isDev
-          ? 'http://localhost:2333'
+          ? 'http://api.innei.ren/v2'
           : 'http://localhost:2333/api/v2',
         changeOrigin: true,
+
+        rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/socket.io': {
         target: 'http://localhost:2333/socket.io',
         ws: true,
+        ignorePath: true,
+        rewrite: (path) => path.replace(/^\/socket\.io/, ''),
       },
     },
   },

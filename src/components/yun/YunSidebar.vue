@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useAggregateData } from '~/composables/use-page-context'
+
 const showOverview = ref(true)
 </script>
 

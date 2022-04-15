@@ -1,8 +1,16 @@
-export type PageProps = {}
+import type { AggregateRoot } from '@mx-space/api-client'
+
+import type { ThemeConfig } from '~/types/config'
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export type PageProps = {
+  aggregateData: AggregateRoot
+  themeConfig: ThemeConfig
+} & Record<string, any>
 // The `pageContext` that are available in both on the server-side and browser-side
-export type PageContext = {
+export interface PageContext {
   Page: any
-  pageProps?: PageProps
+  pageProps: PageProps
   documentProps?: {
     title?: string
     description?: string
