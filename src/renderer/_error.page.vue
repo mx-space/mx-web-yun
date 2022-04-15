@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+defineProps(['is404'])
+</script>
+
 <template>
   <div v-if="is404">
     <h1>404 Page Not Found</h1>
@@ -8,7 +12,3 @@
     <p>Something went wrong.</p>
   </div>
 </template>
-
-<script lang="ts" setup>
-defineProps(['is404'])
-</script>

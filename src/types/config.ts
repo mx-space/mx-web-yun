@@ -16,6 +16,15 @@ export interface SocialLink {
  * Theme Config
  */
 export interface ThemeConfig {
+  author: {
+    status: {
+      emoji?: string
+    }
+  }
+  nav: {
+    url?: string
+    subtitle?: string
+  }
   social: SocialLink[]
   colors: {
     /**

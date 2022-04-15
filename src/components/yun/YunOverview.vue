@@ -1,43 +1,36 @@
 <script lang="ts" setup>
-import { navigate } from 'vite-plugin-ssr/client/router'
+import { useThemeConfig } from '~/composables/use-config'
 
-const config = {
-  author: {
-    avatar:
-      'https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/meme/yun-good-with-bg.jpg',
-    name: '云游君',
-    status: {
-      emoji: 'x',
-    },
-  },
-  title: 'Valaxy Theme Yun',
-  url: 'https://valaxy.yyj.moe/',
-  subtitle: '',
-  description: 'desdescription',
-}
+const themeConfig = useThemeConfig()
 </script>
 
 <template>
   <div class="sidebar-panel">
     <div class="site-info" m="t-6">
       <a class="site-author-avatar" href="/about">
-        <img class="rounded-full" :src="config.author.avatar" alt="avatar" />
-        <span class="site-author-status">{{ config.author.status.emoji }}</span>
+        <img
+          class="rounded-full"
+          :src="themeConfig.author.avatar"
+          alt="avatar"
+        />
+        <span class="site-author-status">{{
+          themeConfig.author.status.emoji
+        }}</span>
       </a>
       <div class="site-author-name">
         <a href="/about">
-          {{ config.author.name }}
+          {{ themeConfig.author.name }}
         </a>
       </div>
       <router-link to="/about/site" class="site-name">
-        {{ config.title }}
+        {{ themeConfig.title }}
       </router-link>
 
-      <h4 v-if="config.subtitle" class="site-subtitle block" text="xs">
-        {{ config.subtitle }}
+      <h4 v-if="themeConfig.subtitle" class="site-subtitle block" text="xs">
+        {{ themeConfig.subtitle }}
       </h4>
-      <div v-if="config.description" class="site-description my-1">
-        {{ config.description }}
+      <div v-if="themeConfig.description" class="site-description my-1">
+        {{ themeConfig.description }}
       </div>
     </div>
 

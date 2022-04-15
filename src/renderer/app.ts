@@ -5,13 +5,16 @@ import '../styles/index.scss'
 import { createSSRApp, defineComponent, h } from 'vue'
 import { createI18n } from 'vue-i18n'
 
+import { createHead } from '@vueuse/head'
+
 import BaseLayout from '../layouts/base.vue'
 import type { PageContext } from './types'
 import { setPageContext } from './usePageContext'
 // @ts-expect-error
 import messages from '/@locales/messages'
 
-export { createApp }
+const head = createHead()
+export { createApp, head }
 
 function createApp(pageContext: PageContext) {
   const { Page, pageProps } = pageContext
@@ -31,7 +34,7 @@ function createApp(pageContext: PageContext) {
 
   const app = createSSRApp(PageWithLayout)
   const locale = useStorage('valaxy-locale', 'cn')
-
+  app.use(head)
   // init i18n, by valaxy config
   const i18n = createI18n({
     legacy: false,

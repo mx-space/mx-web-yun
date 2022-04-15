@@ -1,6 +1,17 @@
 import type { ThemeConfig } from './types/config'
 
 export const defaultThemeConfig: ThemeConfig = {
+  author: {
+    status: {
+      emoji: '😊',
+    },
+  },
+
+  nav: {
+    url: 'https://valaxy.yyj.moe/',
+    subtitle: '',
+  },
+
   social: [
     {
       name: 'RSS',
