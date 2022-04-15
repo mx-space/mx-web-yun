@@ -11,11 +11,20 @@
     ],
     "noImplicitAny": false,
     "types": [
-      "vite/client"
+      "vite/client",
+      "@intlify/vite-plugin-vue-i18n/client"
     ],
     "skipLibCheck": true,
     "jsx": "preserve",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "~": [
+        "./src"
+      ],
+      "~/*": [
+        "./src/*"
+      ],
+    }
   },
   "ts-node": {
     "transpileOnly": true,

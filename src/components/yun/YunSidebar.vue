@@ -3,25 +3,6 @@ const showOverview = ref(true)
 </script>
 
 <template>
-  <div class="sidebar-nav" m="t-6">
-    <button
-      m="x-4"
-      class="sidebar-nav-item yun-icon-btn"
-      :class="showOverview && 'active'"
-      @click="showOverview = true"
-    >
-      <i-ri-passport-line />
-    </button>
-    <button
-      m="x-4"
-      class="sidebar-nav-item yun-icon-btn"
-      :class="!showOverview && 'active'"
-      @click="showOverview = false"
-    >
-      <i-ri-list-ordered />
-    </button>
-  </div>
-
   <div v-if="showOverview" :class="$slots.default && '-mt-4'">
     <YunOverview />
   </div>

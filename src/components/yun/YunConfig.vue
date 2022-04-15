@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import { isDark, toggleDark } from '~/composables/use-dark'
+import { isDark, toggleDark } from '../../composables/use-dark'
 
 const { t } = useI18n()
 </script>

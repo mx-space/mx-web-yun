@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import { navigate } from 'vite-plugin-ssr/client/router'
 
 defineProps<{
@@ -9,7 +9,6 @@ defineProps<{
 
 <template>
   <a :href="to" @click.stop.prevent="() => navigate(to)">
-    {{ title }}
     <slot />
   </a>
 </template>

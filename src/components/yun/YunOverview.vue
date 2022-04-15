@@ -7,7 +7,7 @@ const config = {
       'https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/meme/yun-good-with-bg.jpg',
     name: '云游君',
     status: {
-      emoji: '',
+      emoji: 'x',
     },
   },
   title: 'Valaxy Theme Yun',
@@ -41,11 +41,11 @@ const config = {
       </div>
     </div>
 
-    <!-- <YunSidebarNav /> -->
+    <YunSidebarNav />
     <hr m="t-4 b-2" />
-    <!-- <YunSocialLinks /> -->
+    <YunSocialLinks />
     <hr m="y-2" />
-    <!-- <YunSidebarLinks /> -->
+    <YunSidebarLinks />
     <br />
   </div>
 

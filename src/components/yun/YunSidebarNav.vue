@@ -7,7 +7,9 @@ const { t } = useI18n()
 
 const themeConfig = useThemeConfig()
 const posts = [] as any[]
-const categories = [] as any
+const categories = {
+  children: [],
+} as any
 const tags = [] as any[]
 </script>
 
@@ -42,13 +44,13 @@ const tags = [] as any[]
       <span class="count">{{ Array.from(tags).length }}</span>
     </router-link>
 
-    <!-- <router-link
+    <router-link
       class="site-link-item yun-icon-btn"
       :to="themeConfig.menu.custom.url"
       :title="t(themeConfig.menu.custom.title)"
     >
       <div :class="themeConfig.menu.custom.icon" />
-    </router-link> -->
+    </router-link>
   </nav>
 </template>
 

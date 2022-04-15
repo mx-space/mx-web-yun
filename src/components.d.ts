@@ -5,12 +5,11 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    IRiListOrdered: typeof import('~icons/ri/list-ordered')['default']
-    IRiPassportLine: typeof import('~icons/ri/passport-line')['default']
     RouterLink: typeof import('./components/RouterLink.vue')['default']
     YunConfig: typeof import('./components/yun/YunConfig.vue')['default']
     YunOverview: typeof import('./components/yun/YunOverview.vue')['default']
     YunSidebar: typeof import('./components/yun/YunSidebar.vue')['default']
+    YunSidebarLinks: typeof import('./components/yun/YunSidebarLinks.vue')['default']
     YunSidebarNav: typeof import('./components/yun/YunSidebarNav.vue')['default']
     YunSocialLinks: typeof import('./components/yun/YunSocialLinks.vue')['default']
   }
