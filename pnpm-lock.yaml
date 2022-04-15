@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config': 0.20.2
   '@iconify-json/ant-design': ^1.1.1
+  '@iconify-json/ri': 1.1.1
   '@iconify-json/simple-icons': ^1.1.8
   '@innei-util/prettier': 0.8.2
   '@intlify/vite-plugin-vue-i18n': 3.4.0
@@ -39,6 +40,7 @@ specifiers:
 
 dependencies:
   '@iconify-json/ant-design': 1.1.1
+  '@iconify-json/ri': 1.1.1
   '@iconify-json/simple-icons': 1.1.8
   '@mx-space/api-client': 0.9.2
   '@types/compression': 1.7.2
@@ -443,6 +445,12 @@ packages:
 
   /@iconify-json/ant-design/1.1.1:
     resolution: {integrity: sha512-aziSNNmMGe/BpDVn+LCi7BP1hBJq39kn0j9yk4ZHqKGytiF9JRF/0ziKjxvo0BvYFuPAjwMVJpFzhG0KMZ/DGw==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: false
+
+  /@iconify-json/ri/1.1.1:
+    resolution: {integrity: sha512-H2Bvtew65rCw275lZaLk5sxTmmxa9kpd2i2FOVncDLa/Wpn9L6AnTZhR1NzzPb6iqK2D8HE4Y/wcVr6o0KjMlw==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: false

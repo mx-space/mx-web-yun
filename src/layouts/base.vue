@@ -3,10 +3,9 @@ import YunSidebar from '../components/yun/YunSidebar.vue'
 </script>
 
 <template>
-  <YunSidebar v-if="$slots['sidebar-child']">
-    <slot name="sidebar-child" />
-  </YunSidebar>
-  <YunSidebar v-else />
+  <aside class="va-card transition sidebar md:translate-x-0">
+    <YunSidebar />
+  </aside>
 
   <slot />
 </template>

@@ -1,0 +1,32 @@
+@use "sass:map";
+
+@use "../vars.scss" as *;
+@use "../mixins/" as *;
+
+.sidebar {
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: calc(100vw - 64px);
+  max-width: var(--yun-sidebar-width-mobile);
+
+  background-image: var(--yun-sidebar-bg-image);
+  background-color: var(--yun-sidebar-bg-color);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom 1rem center;
+  text-align: center;
+  z-index: var(--yun-z-sidebar);
+
+  transform: translateX(-100%);
+  transition: box-shadow var(--yun-transition-duration),
+    background-color var(--yun-transition-duration), opacity 0.25s,
+    transform var(--yun-transition-duration) cubic-bezier(0.19, 1, 0.22, 1) !important;
+
+  &.open {
+    transform: translateX(0);
+  }
+}

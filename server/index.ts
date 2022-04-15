@@ -1,8 +1,9 @@
-import express from 'express'
+/** eslint-disable  */
 import compression from 'compression'
-import { createPageRenderer } from 'vite-plugin-ssr'
-import { ViteDevServer } from 'vite'
+import express from 'express'
 import { resolve } from 'path'
+import type { ViteDevServer } from 'vite'
+import { createPageRenderer } from 'vite-plugin-ssr'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const root = `${__dirname}/..`
@@ -26,7 +27,7 @@ async function startServer() {
   }
 
   const renderPage = createPageRenderer({
-    // @ts-ignore
+    // @ts-expect-error
     viteDevServer,
     isProduction,
     root,
@@ -43,7 +44,7 @@ async function startServer() {
     res.status(statusCode).type(contentType).send(body)
   })
 
-  const port = process.env.PORT || 3000
+  const port = process.env.PORT || 4858
   app.listen(port)
   console.log(`Server running at http://localhost:${port}`)
 }

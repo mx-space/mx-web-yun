@@ -113,7 +113,7 @@ export const defaultThemeConfig: ThemeConfig = {
     icon: {
       name: 'i-ri-cloud-line',
       animated: true,
-      color: 'var(--va-c-primary)',
+      color: 'var(--yun-c-primary)',
       url: 'https://sponsors.yunyoujun.cn',
       title: 'Sponsor YunYouJun',
     },
@@ -128,7 +128,7 @@ export const defaultThemeConfig: ThemeConfig = {
 
   types: {
     'link': {
-      color: 'var(--va-c-primary)',
+      color: 'var(--yun-c-primary)',
       icon: 'i-ri-external-link-line',
     },
     'bilibili': {
@@ -140,7 +140,7 @@ export const defaultThemeConfig: ThemeConfig = {
       icon: 'i-ri-douban-line',
     },
     'github': {
-      color: 'var(--va-c-text)',
+      color: 'var(--yun-c-text)',
       icon: 'i-ri-github-line',
     },
     'netease-cloud-music': {
@@ -148,7 +148,7 @@ export const defaultThemeConfig: ThemeConfig = {
       icon: 'i-ri-netease-cloud-music-line',
     },
     'notion': {
-      color: 'var(--va-c-text)',
+      color: 'var(--yun-c-text)',
       icon: 'i-simple-icons-notion',
     },
     'twitter': {

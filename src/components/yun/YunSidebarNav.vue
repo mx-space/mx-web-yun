@@ -42,13 +42,13 @@ const tags = [] as any[]
       <span class="count">{{ Array.from(tags).length }}</span>
     </router-link>
 
-    <router-link
+    <!-- <router-link
       class="site-link-item yun-icon-btn"
       :to="themeConfig.menu.custom.url"
       :title="t(themeConfig.menu.custom.title)"
     >
       <div :class="themeConfig.menu.custom.icon" />
-    </router-link>
+    </router-link> -->
   </nav>
 </template>
 
@@ -73,7 +73,7 @@ const tags = [] as any[]
 
   flex-direction: column;
 
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
 
   &:first-child,
   &:last-child {
@@ -95,8 +95,8 @@ const tags = [] as any[]
   }
 
   .count {
-    color: var(--va-c-text);
-    font-family: var(--va-font-sans);
+    color: var(--yun-c-text);
+    font-family: var(--yun-font-sans);
     display: block;
     text-align: center;
     font-size: 1rem;
@@ -107,7 +107,7 @@ const tags = [] as any[]
     height: 1.5rem;
 
     &:hover {
-      color: var(--va-c-primary-light);
+      color: var(--yun-c-primary-light);
     }
   }
 }

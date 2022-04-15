@@ -13,12 +13,17 @@ import vue from '@vitejs/plugin-vue'
 const isDev = process.env.NODE_ENV === 'development'
 
 const config: UserConfig = {
+  resolve: {
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+    },
+  },
   plugins: [
     vue({
       reactivityTransform: true,
     }),
     ssr(),
-    windiCSS(),
+    windiCSS({}),
     Icons({}),
     AutoImport({
       dts: './src/import.d.ts',
@@ -32,16 +37,14 @@ const config: UserConfig = {
       resolvers: [IconsResolver()],
     }),
     vueI18n({
-      // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
-      // compositionOnly: false,
+      runtimeOnly: true,
+      compositionOnly: true,
 
-      // you need to set i18n resource including paths !
       include: path.resolve(__dirname, './src/locales/**'),
     }),
   ],
 
   server: {
-    port: 4859,
     proxy: {
       '/api': {
         target: isDev

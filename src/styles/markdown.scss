@@ -1,0 +1,29 @@
+@use "~/styles/mixins" as *;
+
+.markdown-body {
+  --c-toc-link: var(--yun-c-text-light);
+}
+
+html.dark {
+  .markdown-body {
+    --c-toc-link: var(--yun-c-text-dark);
+  }
+}
+
+.markdown-body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--yun-font-serif);
+    font-weight: 900;
+  }
+
+  ul {
+    li > p {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+$languages: zh-CN, en;
+
+html[lang] {
+  .markdown-body {
+    div[lang] {
+      display: none;
+    }
+  }
+}
+
+@each $lang in $languages {
+  html[lang="#{$lang}"] {
+    // only for markdown
+    .markdown-body {
+      div[lang="#{$lang}"] {
+        display: block;
+      }
+    }
+  }
+}

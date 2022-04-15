@@ -1,16 +1,27 @@
 <script lang="ts" setup>
-import { useConfig } from 'valaxy'
-import { useRouter } from 'vue-router'
+import { navigate } from 'vite-plugin-ssr/client/router'
 
-const config = useConfig()
-const router = useRouter()
+const config = {
+  author: {
+    avatar:
+      'https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/meme/yun-good-with-bg.jpg',
+    name: '云游君',
+    status: {
+      emoji: '',
+    },
+  },
+  title: 'Valaxy Theme Yun',
+  url: 'https://valaxy.yyj.moe/',
+  subtitle: '',
+  description: 'desdescription',
+}
 </script>
 
 <template>
   <div class="sidebar-panel">
     <div class="site-info" m="t-6">
       <a class="site-author-avatar" href="/about">
-        <img class="rounded-full" :src="config.author.avatar" alt="avatar">
+        <img class="rounded-full" :src="config.author.avatar" alt="avatar" />
         <span class="site-author-status">{{ config.author.status.emoji }}</span>
       </a>
       <div class="site-author-name">
@@ -18,10 +29,10 @@ const router = useRouter()
           {{ config.author.name }}
         </a>
       </div>
-      <router-link v-if="router.hasRoute('about-site')" to="/about/site" class="site-name">
+      <router-link to="/about/site" class="site-name">
         {{ config.title }}
       </router-link>
-      <span v-else class="site-name">{{ config.title }}</span>
+
       <h4 v-if="config.subtitle" class="site-subtitle block" text="xs">
         {{ config.subtitle }}
       </h4>
@@ -30,19 +41,19 @@ const router = useRouter()
       </div>
     </div>
 
-    <YunSidebarNav />
-    <hr m="t-4 b-2">
-    <YunSocialLinks />
-    <hr m="y-2">
-    <YunSidebarLinks />
-    <br>
+    <!-- <YunSidebarNav /> -->
+    <hr m="t-4 b-2" />
+    <!-- <YunSocialLinks /> -->
+    <hr m="y-2" />
+    <!-- <YunSidebarLinks /> -->
+    <br />
   </div>
 
-  <YunConfig />
+  <!-- <YunConfig /> -->
 </template>
 
 <style lang="scss">
-@use "~/styles/mixins" as *;
+@use '~/styles/mixins' as *;
 
 .sidebar-panel {
   padding: 0.5rem;
@@ -70,7 +81,7 @@ const router = useRouter()
     transition: 0.4s;
 
     &:hover {
-      box-shadow: 0 0 30px rgba(var(--va-c-primary-rgb), 0.2);
+      box-shadow: 0 0 30px rgba(var(--yun-c-primary-rgb), 0.2);
     }
   }
 }
@@ -90,13 +101,13 @@ const router = useRouter()
   line-height: 1.8rem;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  background-color: var(--va-c-bg-light);
+  background-color: var(--yun-c-bg-light);
 
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-name {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
   font-family: get-css-var('font-serif');
   font-weight: get-css-var('font-serif-weight');
 }
@@ -107,7 +118,7 @@ const router = useRouter()
 }
 
 .site-description {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
   font-size: 0.8rem;
 }
 </style>

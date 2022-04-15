@@ -1,18 +1,16 @@
 <script lang="ts" setup>
-import YunOverview from './YunOverview.vue'
-
-const showOverview = ref(false)
+const showOverview = ref(true)
 </script>
 
 <template>
-  <div v-if="$slots.default" class="sidebar-nav" m="t-6">
+  <div class="sidebar-nav" m="t-6">
     <button
       m="x-4"
       class="sidebar-nav-item yun-icon-btn"
       :class="showOverview && 'active'"
       @click="showOverview = true"
     >
-      <div i-ri-passport-line />
+      <i-ri-passport-line />
     </button>
     <button
       m="x-4"
@@ -20,33 +18,26 @@ const showOverview = ref(false)
       :class="!showOverview && 'active'"
       @click="showOverview = false"
     >
-      <div i-ri-list-ordered />
+      <i-ri-list-ordered />
     </button>
   </div>
 
-  <div
-    v-if="showOverview || !$slots.default"
-    :class="$slots.default && '-mt-4'"
-  >
+  <div v-if="showOverview" :class="$slots.default && '-mt-4'">
     <YunOverview />
-  </div>
-
-  <div v-else>
-    <slot />
   </div>
 </template>
 
 <style lang="scss">
 .sidebar-nav {
   .sidebar-nav-item {
-    color: var(--va-c-primary);
-    border: 1px solid var(--va-c-primary);
+    color: var(--yun-c-primary);
+    border: 1px solid var(--yun-c-primary);
 
     &.active {
-      border: 1px solid var(--va-c-primary);
+      border: 1px solid var(--yun-c-primary);
 
       color: white;
-      background-color: var(--va-c-primary);
+      background-color: var(--yun-c-primary);
     }
   }
 }
