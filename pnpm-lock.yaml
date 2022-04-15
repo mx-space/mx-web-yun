@@ -39,6 +39,7 @@ specifiers:
   vite-plugin-ssr: ^0.3.62
   vue: ^3.2.31
   vue-i18n: 9.1.9
+  vue-router: 4.0.14
 
 dependencies:
   '@iconify-json/ant-design': 1.1.1
@@ -66,6 +67,7 @@ dependencies:
   vite-plugin-ssr: 0.3.62_vite@2.9.4
   vue: 3.2.32
   vue-i18n: 9.1.9_vue@3.2.32
+  vue-router: 4.0.14_vue@3.2.32
 
 devDependencies:
   '@antfu/eslint-config': 0.20.2_eslint@8.13.0+typescript@4.6.3
@@ -4276,6 +4278,15 @@ packages:
       '@intlify/core-base': 9.1.9
       '@intlify/shared': 9.1.9
       '@intlify/vue-devtools': 9.1.9
+      '@vue/devtools-api': 6.1.4
+      vue: 3.2.32
+    dev: false
+
+  /vue-router/4.0.14_vue@3.2.32:
+    resolution: {integrity: sha512-wAO6zF9zxA3u+7AkMPqw9LjoUCjSxfFvINQj3E/DceTt6uEz1XZLraDhdg2EYmvVwTBSGlLYsUw8bDmx0754Mw==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
       '@vue/devtools-api': 6.1.4
       vue: 3.2.32
     dev: false

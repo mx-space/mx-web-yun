@@ -5,9 +5,19 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    RouterLink: typeof import('./components/RouterLink.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
+    ValaxyFooter: typeof import('./components/valaxy/ValaxyFooter.vue')['default']
+    ValaxyHamburger: typeof import('./components/valaxy/ValaxyHamburger.vue')['default']
+    ValaxyOverlay: typeof import('./components/valaxy/ValaxyOverlay.vue')['default']
+    ValaxyRightSidebar: typeof import('./components/valaxy/ValaxyRightSidebar.vue')['default']
+    ValaxySidebar: typeof import('./components/valaxy/ValaxySidebar.vue')['default']
+    YunBackToTop: typeof import('./components/yun/YunBackToTop.vue')['default']
+    YunBanner: typeof import('./components/yun/YunBanner.vue')['default']
+    YunCard: typeof import('./components/yun/YunCard.vue')['default']
     YunConfig: typeof import('./components/yun/YunConfig.vue')['default']
     YunOverview: typeof import('./components/yun/YunOverview.vue')['default']
+    YunSay: typeof import('./components/yun/YunSay.vue')['default']
     YunSidebar: typeof import('./components/yun/YunSidebar.vue')['default']
     YunSidebarLinks: typeof import('./components/yun/YunSidebarLinks.vue')['default']
     YunSidebarNav: typeof import('./components/yun/YunSidebarNav.vue')['default']

@@ -8,19 +8,21 @@ import { createI18n } from 'vue-i18n'
 import { createHead } from '@vueuse/head'
 
 import { setPageContext } from '../composables/use-page-context'
-import BaseLayout from '../layouts/base.vue'
+import { createRouter } from '../router'
+import App from './App.vue'
 import type { PageContext } from './types'
 // @ts-expect-error
 import messages from '/@locales/messages'
 
 export const head = createHead()
-
+export const router = createRouter()
+export const pinia = createPinia()
 export function createApp(pageContext: PageContext) {
   const { Page, pageProps } = pageContext
   const PageWithLayout = defineComponent({
     render() {
       return h(
-        BaseLayout,
+        App,
         {},
         {
           default() {
@@ -37,6 +39,13 @@ export function createApp(pageContext: PageContext) {
 
   const locale = useStorage('yun-locale', 'cn')
   app.use(head)
+  app.use(router)
+  app.use(pinia)
+
+  if (!import.meta.env.SSR)
+    pinia.state.value = pageContext.pageProps.pinia || {}
+  else pageContext.pageProps.pinia = pinia.state.value
+
   // init i18n, by valaxy config
   const i18n = createI18n({
     legacy: false,

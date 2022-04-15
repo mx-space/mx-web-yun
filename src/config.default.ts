@@ -98,7 +98,6 @@ export const defaultThemeConfig: ThemeConfig = {
   },
   banner: {
     enable: true,
-    title: '云游君的小站',
   },
 
   bg_image: {

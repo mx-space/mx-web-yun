@@ -8,7 +8,7 @@ import { renderHeadToString } from '@vueuse/head'
 import { defaultThemeConfig } from '~/config.default'
 import { apiClient } from '~/utils/api-client'
 
-import { createApp, head } from './app'
+import { createApp, head, router } from './app'
 import type { PageContext } from './types'
 
 // See https://vite-plugin-ssr.com/data-fetching
@@ -48,6 +48,8 @@ export async function render(pageContext: PageContextBuiltIn & PageContext) {
   const pageProps = {
     web: 'yun',
 
+    pinia: {},
+
     themeConfig,
     aggregateData,
   }
@@ -69,10 +71,14 @@ export async function render(pageContext: PageContextBuiltIn & PageContext) {
       </body>
     </html>`
 
+  router.push(pageContext.url)
+  await router.isReady()
+
   return {
     documentHtml,
     pageContext: {
       pageProps,
+
       // We can add some `pageContext` here, which is useful if we want to do page redirection https://vite-plugin-ssr.com/page-redirection
     },
   }

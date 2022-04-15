@@ -9,5 +9,8 @@ module.exports = {
     'operator-linebreak': 'off',
     'space-before-function-paren': 'off',
     'arrow-parens': 'off',
+    '@typescript-eslint/brace-style': 'off',
+    'vue/html-indent': 'off',
+    'vue/html-closing-bracket-newline': 'off',
   },
 }

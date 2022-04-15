@@ -42,7 +42,6 @@ export interface ThemeConfig {
     /**
      * 标题
      */
-    title: string
   }
 
   bg_image: {

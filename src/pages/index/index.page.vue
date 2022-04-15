@@ -1,23 +1,4 @@
-<script lang="ts" setup>
-useHead({
-  title: ' 1s',
-})
-async function onBeforeRender() {
-  return {
-    pageContext: {
-      documentProps: {
-        title: 'aa',
-      },
-    },
-  }
-}
-
-const pageContext = {
-  documentProps: {
-    title: 'aa',
-  },
-}
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <h1>Welcome</h1>

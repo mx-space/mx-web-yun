@@ -2,7 +2,7 @@ import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client'
 import { getPage } from 'vite-plugin-ssr/client'
 import { useClientRouter } from 'vite-plugin-ssr/client/router'
 
-import { createApp } from './app'
+import { createApp, router } from './app'
 import type { PageContext } from './types'
 
 hydrate()
@@ -12,7 +12,7 @@ async function hydrate() {
   // instead of `getPage()`, see https://vite-plugin-ssr.com/useClientRouter
   const pageContext = await getPage<PageContextBuiltInClient & PageContext>()
   const app = createApp(pageContext)
-
+  await router.isReady()
   app.mount('#app')
 }
 
