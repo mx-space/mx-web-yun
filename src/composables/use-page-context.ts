@@ -32,3 +32,7 @@ export const useAggregateData = () => {
 export const useThemeConfig = () => {
   return inject(pagePropsKey)?.themeConfig || cloneDeep(defaultThemeConfig)
 }
+
+export const usePageProps = <T>() => {
+  return inject(pagePropsKey)?.pageProps as T
+}

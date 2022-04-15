@@ -25,9 +25,7 @@ const isHome = useLayout('home')
 
     <slot name="board" />
 
-    <slot>
-      <router-view />
-    </slot>
+    <router-view />
 
     <ValaxyFooter>
       <slot name="footer" />

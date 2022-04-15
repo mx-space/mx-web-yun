@@ -46,6 +46,8 @@ export async function render(pageContext: PageContextBuiltIn & PageContext) {
   const { themeConfig, aggregateData } = await fetchAggregateData()
 
   const pageProps = {
+    pageProps: pageContext.pageProps,
+
     web: 'yun',
 
     pinia: {},
@@ -53,7 +55,13 @@ export async function render(pageContext: PageContextBuiltIn & PageContext) {
     themeConfig,
     aggregateData,
   }
+
   const app = createApp({ ...pageContext, pageProps })
+
+  // 一定要写这里， 先 push 再 render
+  router.push(pageContext.url)
+  await router.isReady()
+
   const appHtml = await renderToString(app)
 
   const { headTags, htmlAttrs, bodyAttrs } = renderHeadToString(head)
@@ -71,15 +79,10 @@ export async function render(pageContext: PageContextBuiltIn & PageContext) {
       </body>
     </html>`
 
-  router.push(pageContext.url)
-  await router.isReady()
-
   return {
     documentHtml,
     pageContext: {
       pageProps,
-
-      // We can add some `pageContext` here, which is useful if we want to do page redirection https://vite-plugin-ssr.com/page-redirection
     },
   }
 }

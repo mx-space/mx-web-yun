@@ -1,5 +1,6 @@
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 
+import { generatePropsObject } from '~/utils'
 import { apiClient } from '~/utils/api-client'
 
 export async function onBeforeRender(pageContext: PageContextBuiltIn) {
@@ -8,9 +9,5 @@ export async function onBeforeRender(pageContext: PageContextBuiltIn) {
     parseInt(pageContext.urlParsed.search?.page ?? '') || 1,
   )
 
-  return {
-    pageContext: {
-      documentProps: data,
-    },
-  }
+  return generatePropsObject(pageContext, data)
 }
