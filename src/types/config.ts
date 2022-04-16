@@ -135,6 +135,21 @@ export interface ThemeConfig {
       icon: string
     }
   }
+
+  /**
+   * donate for author
+   * @description 打赏/赞助
+   */
+  sponsor: {
+    enable: boolean
+    title: string
+    methods: {
+      name: string
+      url: string
+      color: string
+      icon: string
+    }[]
+  }
 }
 
 export type ThemeUserConfig = Partial<ThemeConfig>

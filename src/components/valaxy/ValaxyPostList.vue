@@ -3,6 +3,8 @@ import { computed, ref } from 'vue'
 
 import type { PostModel } from '@mx-space/api-client/types/models/post'
 
+import { ClientOnly } from '../ClientOnly'
+
 const props = withDefaults(
   defineProps<{
     posts?: PostModel[]
@@ -19,21 +21,25 @@ const displayedPosts = props.posts
 </script>
 
 <template>
-  <div w="full" p="x-4 lt-sm:0">
-    <template v-if="!displayedPosts.length">
-      <div py2 op50>博主还什么都没写哦～</div>
+  <ClientOnly>
+    <template #default>
+      <div w="full" p="x-4 lt-sm:0">
+        <template v-if="!displayedPosts.length">
+          <div py2 op50>博主还什么都没写哦～</div>
+        </template>
+
+        <Transition v-for="(post, i) in displayedPosts" :key="i" name="fade">
+          <PostCard :post="post" />
+        </Transition>
+      </div>
+
+      <ValaxyPagination
+        :cur-page="curPage"
+        :page-size="pageSize"
+        :total="posts.length"
+      />
     </template>
-
-    <Transition v-for="(post, i) in displayedPosts" :key="i" name="fade">
-      <PostCard :post="post" />
-    </Transition>
-  </div>
-
-  <ValaxyPagination
-    :cur-page="curPage"
-    :page-size="pageSize"
-    :total="posts.length"
-  />
+  </ClientOnly>
 </template>
 
 <style>

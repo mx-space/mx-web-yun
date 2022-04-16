@@ -20,4 +20,17 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/posts',
+    component: () => import('../layouts/post.vue'),
+    children: [
+      {
+        path: ':category/:slug',
+        component: () => import('../pages/post/index.page.vue'),
+        meta: {
+          layout: 'post',
+        },
+      },
+    ],
+  },
 ]

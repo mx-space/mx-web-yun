@@ -1,10 +1,13 @@
 <script lang="ts" setup>
+import { useRoute, useRouter } from 'vue-router'
+
 import { useLayout } from '~/composables'
 import { useAppStore } from '~/stores/app'
 
 const app = useAppStore()
 
 const isHome = useLayout('home')
+console.log(useRouter().getRoutes())
 </script>
 
 <template>

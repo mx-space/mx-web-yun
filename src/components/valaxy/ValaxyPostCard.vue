@@ -11,7 +11,9 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-const path = computed(() => `/${props.post.category.slug}/${props.post.slug}`)
+const path = computed(
+  () => `/posts/${props.post.category.slug}/${props.post.slug}`,
+)
 const excerpt = computed(() => excerptMarkdownAndRenderToHtml(props.post.text))
 </script>
 
@@ -76,7 +78,7 @@ const excerpt = computed(() => excerptMarkdownAndRenderToHtml(props.post.text))
           <router-link
             v-for="(tag, i) in post.tags"
             :key="i"
-            :to="{ path: '/tags/', query: { tag: tag } }"
+            :to="{ path: '/tags/' + tag }"
             m="x-1"
             class="post-tag inline-flex justify-center items-center"
           >

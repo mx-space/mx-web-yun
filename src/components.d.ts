@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ValaxyAppLink: typeof import('./components/valaxy/ValaxyAppLink.vue')['default']
+    ValaxyCopyright: typeof import('./components/valaxy/ValaxyCopyright.vue')['default']
     ValaxyFooter: typeof import('./components/valaxy/ValaxyFooter.vue')['default']
     ValaxyHamburger: typeof import('./components/valaxy/ValaxyHamburger.vue')['default']
     ValaxyOverlay: typeof import('./components/valaxy/ValaxyOverlay.vue')['default']
@@ -29,6 +30,7 @@ declare module '@vue/runtime-core' {
     YunSidebarLinks: typeof import('./components/yun/YunSidebarLinks.vue')['default']
     YunSidebarNav: typeof import('./components/yun/YunSidebarNav.vue')['default']
     YunSocialLinks: typeof import('./components/yun/YunSocialLinks.vue')['default']
+    YunSponsor: typeof import('./components/yun/YunSponsor.vue')['default']
   }
 }
 
