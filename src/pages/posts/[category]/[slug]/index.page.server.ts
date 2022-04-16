@@ -6,5 +6,5 @@ import { apiClient } from '~/utils/api-client'
 export async function onBeforeRender(pageContext: PageContextBuiltIn) {
   console.log(pageContext.routeParams)
 
-  return generatePropsObject(pageContext, {})
+  return generatePropsObject(pageContext, { a: { xxa: 1 } })
 }

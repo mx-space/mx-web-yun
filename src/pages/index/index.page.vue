@@ -6,6 +6,8 @@ import { usePageProps } from '~/composables'
 const props = usePageProps<PaginateResult<PostModel>>()
 const posts = computed(() => props.data)
 const pager = computed(() => props.pagination)
+
+console.log(props)
 </script>
 
 <template>

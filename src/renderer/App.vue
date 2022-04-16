@@ -6,6 +6,7 @@ import { providePageProps } from '~/composables/use-page-context'
 import type { PageProps } from './types'
 
 const props = defineProps<{ pageProps: PageProps }>()
+
 providePageProps(props.pageProps)
 
 const seo = props.pageProps.aggregateData.seo

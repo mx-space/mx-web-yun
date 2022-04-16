@@ -6,9 +6,10 @@ import { renderToString } from '@vue/server-renderer'
 import { renderHeadToString } from '@vueuse/head'
 
 import { defaultThemeConfig } from '~/config.default'
+import { router } from '~/router'
 import { apiClient } from '~/utils/api-client'
 
-import { createApp, head, router } from './app'
+import { createApp, head } from './app'
 import type { PageContext } from './types'
 
 // See https://vite-plugin-ssr.com/data-fetching

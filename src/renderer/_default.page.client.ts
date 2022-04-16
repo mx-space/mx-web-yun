@@ -2,7 +2,10 @@ import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client'
 import { getPage } from 'vite-plugin-ssr/client'
 import { useClientRouter } from 'vite-plugin-ssr/client/router'
 
-import { createApp, router } from './app'
+import { getPagePropsRef } from '~/composables'
+import { router } from '~/router'
+
+import { createApp } from './app'
 import type { PageContext } from './types'
 
 hydrate()
@@ -18,7 +21,19 @@ async function hydrate() {
 }
 
 const { hydrationPromise } = useClientRouter({
-  async render() {},
+  render(pageContext: PageContext & PageContextBuiltInClient) {
+    if (pageContext.isHydration) {
+    } else {
+      const pageProps = pageContext.pageProps
+      const ref = getPagePropsRef()
+      console.log(
+        'set--',
+        !pageProps.aggregateData ? { ...ref.value, pageProps } : pageProps,
+      )
+
+      ref.value = { ...ref.value!, pageProps }
+    }
+  },
 
   // If `ensureHydration: true` then `vite-plugin-ssr` ensures that the first render is always
   // a hydration. (In other words, the hydration process is never interrupted — even if the

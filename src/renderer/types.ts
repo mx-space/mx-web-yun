@@ -6,6 +6,8 @@ import type { ThemeConfig } from '~/types/config'
 export type PageProps = {
   aggregateData: AggregateRoot
   themeConfig: ThemeConfig
+
+  pageProps?: any
 } & Record<string, any>
 // The `pageContext` that are available in both on the server-side and browser-side
 export interface PageContext {

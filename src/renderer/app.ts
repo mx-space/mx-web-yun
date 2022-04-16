@@ -7,15 +7,16 @@ import { createI18n } from 'vue-i18n'
 
 import { createHead } from '@vueuse/head'
 
+import { router } from '~/router'
+
 import { setPageContext } from '../composables/use-page-context'
-import { createRouter } from '../router'
 import App from './App.vue'
 import type { PageContext } from './types'
 // @ts-expect-error
 import messages from '/@locales/messages'
 
 export const head = createHead()
-export const router = createRouter()
+
 export const pinia = createPinia()
 export function createApp(pageContext: PageContext) {
   const { Page, pageProps } = pageContext
