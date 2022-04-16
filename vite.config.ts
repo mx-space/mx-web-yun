@@ -168,22 +168,21 @@ const config: UserConfig = {
   ],
   publicDir: path.resolve(__dirname, './public'),
   server: {
-    proxy: {
-      '/api': {
-        target: isDev
-          ? 'http://api.innei.ren/v2'
-          : 'http://localhost:2333/api/v2',
-        changeOrigin: true,
-
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-      '/socket.io': {
-        target: 'http://localhost:2333/socket.io',
-        ws: true,
-        ignorePath: true,
-        rewrite: (path) => path.replace(/^\/socket\.io/, ''),
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: isDev
+    //       ? 'http://api.innei.ren/v2'
+    //       : 'http://localhost:2333/api/v2',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //   },
+    //   '/socket.io': {
+    //     target: 'http://localhost:2333/socket.io',
+    //     ws: true,
+    //     ignorePath: true,
+    //     rewrite: (path) => path.replace(/^\/socket\.io/, ''),
+    //   },
+    // },
   },
 }
 

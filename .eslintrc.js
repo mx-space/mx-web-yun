@@ -12,5 +12,6 @@ module.exports = {
     '@typescript-eslint/brace-style': 'off',
     'vue/html-indent': 'off',
     'vue/html-closing-bracket-newline': 'off',
+    'no-console': 'off',
   },
 }

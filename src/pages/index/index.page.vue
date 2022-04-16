@@ -5,12 +5,8 @@ const props = usePageProps()
 </script>
 
 <template>
-  <h1>Welcome</h1>
   <pre>
-    {{ props }}
+    {{ props.data.map((i) => i.category.slug) }}
+
   </pre>
-  This page is:
-  <ul>
-    <li>Rendered to HTML.</li>
-  </ul>
 </template>

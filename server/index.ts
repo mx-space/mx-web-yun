@@ -1,28 +1,34 @@
-/** eslint-disable  */
-import compression from 'compression'
-import express from 'express'
+/* eslint-disable @typescript-eslint/no-var-requires */
+import fastify from 'fastify'
+import express from 'fastify-express'
+import proxy from 'fastify-http-proxy'
 import { resolve } from 'path'
 import type { ViteDevServer } from 'vite'
 import { createPageRenderer } from 'vite-plugin-ssr'
 
 const isProduction = process.env.NODE_ENV === 'production'
-const root = `${__dirname}/..`
+const isDev = !isProduction
+const root = resolve(__dirname, '../')
 
 startServer()
 
 async function startServer() {
-  const app = express()
+  const app = fastify()
 
   let viteDevServer: ViteDevServer
   if (isProduction) {
-    app.use(compression())
-    app.use(express.static(`${root}/dist/client`))
+    app.register(require('fastify-compress'), { global: false })
+    app.register(require('fastify-static'), {
+      root: `${root}/dist/client`,
+      wildcard: false,
+    })
   } else {
     const vite = require('vite')
     viteDevServer = await vite.createServer({
       root,
       server: { middlewareMode: 'ssr' },
     })
+    await app.register(express)
     app.use(viteDevServer.middlewares)
   }
 
@@ -32,14 +38,34 @@ async function startServer() {
     isProduction,
     root,
   })
-  app.get('*', async (req, res, next) => {
-    const url = req.originalUrl
+
+  app.register(proxy, {
+    prefix: '/api',
+    upstream: isDev
+      ? 'https://api.innei.ren/v2/'
+      : 'http://localhost:2333/api/v2/',
+  })
+
+  app.register(proxy, {
+    prefix: '/socket.io',
+    upstream: 'http://localhost:2333/socket.io',
+    websocket: true,
+  })
+
+  app.get('*', async (req, res) => {
+    const url = req.raw.url as string
+
     const pageContextInit = {
       url,
     }
     const pageContext = await renderPage(pageContextInit)
     const { httpResponse } = pageContext
-    if (!httpResponse) return next()
+    if (!httpResponse) {
+      res.send({
+        message: 'No httpResponse',
+      })
+      return
+    }
     const { body, statusCode, contentType } = httpResponse
     res.status(statusCode).type(contentType).send(body)
   })
