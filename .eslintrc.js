@@ -13,5 +13,7 @@ module.exports = {
     'vue/html-indent': 'off',
     'vue/html-closing-bracket-newline': 'off',
     'no-console': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    '@typescript-eslint/no-extra-semi': 'off',
   },
 }

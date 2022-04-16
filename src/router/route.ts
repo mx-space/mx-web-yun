@@ -17,7 +17,6 @@ export const routes: RouteRecordRaw[] = [
         meta: {
           layout: 'home',
         },
-        props: true,
       },
     ],
   },

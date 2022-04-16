@@ -167,6 +167,9 @@ const config: UserConfig = {
     createI18nPlugin(),
   ],
   publicDir: path.resolve(__dirname, './public'),
+  define: {
+    __VUE_OPTIONS_API__: false,
+  },
   server: {
     // proxy: {
     //   '/api': {

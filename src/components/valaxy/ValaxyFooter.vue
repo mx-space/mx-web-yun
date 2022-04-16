@@ -2,20 +2,25 @@
 import { capitalize, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useAggregateData, useThemeConfig } from '~/composables'
+
+import pkg from '../../../package.json'
+
 const { t } = useI18n()
 
-// const config = useConfig()
-// const themeConfig = useThemeConfig()
+const rootData = useAggregateData()
+const user = rootData!.user
+const themeConfig = useThemeConfig()
 
 const year = new Date().getFullYear()
 
-// const isThisYear = computed(() => {
-//   return year === themeConfig.value.footer.since
-// })
+const isThisYear = computed(() => {
+  return year === themeConfig.footer.since
+})
 
 const poweredHtml = computed(() =>
   t('footer.powered', [
-    `<a href="${pkg.repository}" target="_blank" rel="noopener">Valaxy</a> v${pkg.version}`,
+    `<a href="${pkg.repository.url}" target="_blank" rel="noopener">Yun & Mix Space</a> v${pkg.version}`,
   ]),
 )
 </script>
@@ -26,7 +31,7 @@ const poweredHtml = computed(() =>
     text="center sm"
     style="color: var(--yun-c-text-light)"
   >
-    <!-- <div
+    <div
       v-if="themeConfig.footer.beian.enable && themeConfig.footer.beian.icp"
       class="beian"
       m="y-2"
@@ -55,22 +60,12 @@ const poweredHtml = computed(() =>
         <div :class="themeConfig.footer.icon.name" />
       </a>
 
-      <span>{{ config.author.name }}</span>
+      <span>{{ user.name }}</span>
     </div>
 
     <div v-if="themeConfig.footer.powered" class="powered" m="2">
-      <span v-html="poweredHtml" /> |
-      <span
-        >{{ t('footer.theme') }} -
-        <a
-          :href="themePkg.homepage"
-          :title="'valaxy-theme-' + config.theme"
-          target="_blank"
-          >{{ capitalize(config.theme) }}</a
-        >
-        v{{ themePkg.version }}</span
-      >
-    </div> -->
+      <span v-html="poweredHtml" />
+    </div>
 
     <slot />
   </footer>

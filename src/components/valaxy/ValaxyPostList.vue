@@ -15,7 +15,7 @@ const props = withDefaults(
   },
 )
 
-const displayedPosts = []
+const displayedPosts = props.posts
 </script>
 
 <template>
@@ -24,8 +24,8 @@ const displayedPosts = []
       <div py2 op50>博主还什么都没写哦～</div>
     </template>
 
-    <Transition v-for="(route, i) in displayedPosts" :key="i" name="fade">
-      <PostCard :post="route" />
+    <Transition v-for="(post, i) in displayedPosts" :key="i" name="fade">
+      <PostCard :post="post" />
     </Transition>
   </div>
 
@@ -43,10 +43,10 @@ const displayedPosts = []
 }
 
 .post-categories {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
 }
 
 .post-tag {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
 }
 </style>

@@ -68,14 +68,14 @@ onMounted(() => {
 
 <style lang="scss">
 .say {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
   display: block;
   text-align: center;
-  font-family: var(--va-font-serif);
+  font-family: var(--yun-font-serif);
   font-weight: bold;
   padding: 0.5rem;
-  border-top: var(--va-border-width) solid var(--va-c-text-light);
-  border-bottom: var(--va-border-width) solid var(--va-c-text-light);
+  border-top: var(--yun-border-width) solid var(--yun-c-text-light);
+  border-bottom: var(--yun-border-width) solid var(--yun-c-text-light);
 
   .say-content {
     display: block;

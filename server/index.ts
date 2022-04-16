@@ -28,6 +28,7 @@ async function startServer() {
       root,
       server: { middlewareMode: 'ssr' },
     })
+
     await app.register(express)
     app.use(viteDevServer.middlewares)
   }
@@ -59,10 +60,11 @@ async function startServer() {
       url,
     }
     const pageContext = await renderPage(pageContextInit)
-    const { httpResponse } = pageContext
+    const { httpResponse, errorWhileRendering } = pageContext
     if (!httpResponse) {
       res.send({
-        message: 'No httpResponse',
+        url,
+        error: errorWhileRendering,
       })
       return
     }

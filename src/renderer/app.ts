@@ -1,6 +1,6 @@
 import '@unocss/reset/tailwind.css'
-import 'uno.css'
 import '../styles/index.scss'
+import 'uno.css'
 
 import { createSSRApp, defineComponent, h } from 'vue'
 import { createI18n } from 'vue-i18n'
