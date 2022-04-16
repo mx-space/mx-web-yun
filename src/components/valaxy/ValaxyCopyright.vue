@@ -65,7 +65,7 @@ const licenseHtml = computed(() => {
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
   border-left: 4px solid #ff5252;
-  background-color: var(--va-c-bg-dark);
+  background-color: var(--yun-c-bg-dark);
   list-style: none;
   word-break: break-all;
   position: relative;

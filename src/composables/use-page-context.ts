@@ -35,11 +35,3 @@ export const useThemeConfig = () => {
     inject(pagePropsKey)?.value?.themeConfig || cloneDeep(defaultThemeConfig)
   )
 }
-
-export const usePageProps = <T>() => {
-  return inject(pagePropsKey)?.value?.pageProps as T
-}
-
-export const getPagePropsRef = () => {
-  return refData
-}

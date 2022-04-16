@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import { usePageProps } from '~/composables'
+import ValaxyMd from '~/components/valaxy/ValaxyMd.vue'
+import { usePostContext } from '~/composables/page-context/use-post'
+import { markdownRender } from '~/utils'
 
-const props = usePageProps()
+const data = usePostContext()
 </script>
 
 <template>
-  <div>
-    {{ props.a.xxa }}
+  <div v-if="data">
+    <ValaxyMd :frontmatter="data" :md="markdownRender(data.text)"> </ValaxyMd>
   </div>
 </template>

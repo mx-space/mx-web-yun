@@ -15,5 +15,6 @@ module.exports = {
     'no-console': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     '@typescript-eslint/no-extra-semi': 'off',
+    'vue/html-self-closing': 'off',
   },
 }

@@ -1,8 +1,6 @@
 import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client'
 import { getPage } from 'vite-plugin-ssr/client'
-import { useClientRouter } from 'vite-plugin-ssr/client/router'
 
-import { getPagePropsRef } from '~/composables'
 import { router } from '~/router'
 
 import { createApp } from './app'
@@ -19,29 +17,3 @@ async function hydrate() {
   await router.isReady()
   app.mount('#app')
 }
-
-const { hydrationPromise } = useClientRouter({
-  render(pageContext: PageContext & PageContextBuiltInClient) {
-    if (pageContext.isHydration) {
-    } else {
-      const pageProps = pageContext.pageProps
-      const ref = getPagePropsRef()
-      console.log(
-        'set--',
-        !pageProps.aggregateData ? { ...ref.value, pageProps } : pageProps,
-      )
-
-      ref.value = { ...ref.value!, pageProps }
-    }
-  },
-
-  // If `ensureHydration: true` then `vite-plugin-ssr` ensures that the first render is always
-  // a hydration. (In other words, the hydration process is never interrupted — even if the
-  // user clicks on a link before the hydration started. Default value: `false`.)
-  // If we use Vue, we need `ensureHydration: true` to avoid "Hydration Mismatch" errors.
-  // If we use React, we can leave `ensureHydration: false` for a slight performance improvement.
-  ensureHydration: true,
-
-  // See `Link prefetching` section below. Default value: `false`.
-  prefetchLinks: true,
-})

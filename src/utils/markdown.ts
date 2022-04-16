@@ -18,3 +18,4 @@ export const excerptMarkdownAndRenderToHtml = (markdown: string) => {
   const excerpt = markdown.split(excerpt_separator)[0]
   return render.render(excerpt)
 }
+export const markdownRender = (markdown: string) => render.render(markdown)

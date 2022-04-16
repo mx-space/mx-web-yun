@@ -98,10 +98,10 @@ const excerpt = computed(() => excerptMarkdownAndRenderToHtml(props.post.text))
 }
 
 .post-categories {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
 }
 
 .post-tag {
-  color: var(--va-c-text);
+  color: var(--yun-c-text);
 }
 </style>

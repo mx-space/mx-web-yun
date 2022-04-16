@@ -47,8 +47,6 @@ export async function render(pageContext: PageContextBuiltIn & PageContext) {
   const { themeConfig, aggregateData } = await fetchAggregateData()
 
   const pageProps = {
-    pageProps: pageContext.pageProps,
-
     web: 'yun',
 
     pinia: {},
