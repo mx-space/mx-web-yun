@@ -1,0 +1,192 @@
+<script lang="ts" setup>
+import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+import type { PostModel } from '@mx-space/api-client'
+
+import { useTimelineStore } from '~/stores/timeline'
+import { formatDate } from '~/utils/time-date'
+
+const { t } = useI18n()
+
+const props = defineProps<{
+  posts: PostModel[]
+}>()
+
+const years = ref<number[]>([])
+const postList = ref<Record<string, PostModel[]>>({})
+
+watch(
+  () => props.posts,
+  () => {
+    postList.value = {}
+    years.value = []
+    props.posts.forEach((post) => {
+      if (post.created) {
+        const year = parseInt(formatDate(post.created, 'YYYY'))
+        if (postList.value[year]) {
+          postList.value[year].push(post)
+        } else {
+          years.value.push(year)
+          postList.value[year] = [post]
+        }
+      }
+    })
+  },
+  { immediate: true },
+)
+const timelineStore = useTimelineStore()
+</script>
+
+<template>
+  <div class="post-collapse px-10 lt-sm:px-5">
+    <div w="full" text="center" class="yun-text-light" p="2">
+      {{ t('counter.archives', posts.length) }}
+    </div>
+
+    <div v-for="year in timelineStore.sortedYears" :key="year" m="b-6">
+      <div class="collection-title">
+        <h2
+          :id="`#archive-year-${year}`"
+          class="archive-year"
+          text="4xl"
+          p="y-2"
+        >
+          {{ year }}
+        </h2>
+      </div>
+
+      <article
+        v-for="post in timelineStore.sortedMap.get(year)"
+        :key="post.id"
+        class="post-item"
+      >
+        <header class="post-header">
+          <div class="post-meta">
+            <time v-if="post.date" class="post-time" font="mono" opacity="80">{{
+              formatDate(post.date, 'MM-DD')
+            }}</time>
+          </div>
+          <h2 class="post-title" font="serif black">
+            <router-link :to="post.as" class="post-title-link">
+              {{ post.title }}
+            </router-link>
+          </h2>
+        </header>
+      </article>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+.post-collapse {
+  position: relative;
+
+  &-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .collection-title {
+    position: relative;
+    margin: 0;
+    border-bottom: 2px solid rgba(var(--yun-c-primary-rgb), 0.6);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 2px;
+      height: 50%;
+      background: rgba(var(--yun-c-primary-rgb), 0.3);
+    }
+
+    .archive-year {
+      color: var(--yun-c-primary);
+      margin: 0 1.5rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 35%;
+        margin-left: -11px;
+        margin-top: -4px;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: var(--yun-c-primary);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .post-item {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      background: rgba(var(--yun-c-primary-rgb), 0.3);
+    }
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    border-bottom: 1px solid rgba(var(--yun-c-primary-rgb), 0.3);
+    display: flex;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      margin-left: -4px;
+      border-radius: 50%;
+      border: 1px solid var(--yun-c-primary);
+      background-color: var(--yun-c-bg-light);
+      z-index: 1;
+      transition: background var(--yun-transition-duration);
+    }
+
+    &:hover {
+      &::before {
+        background: var(--yun-c-primary);
+      }
+    }
+
+    .post-title {
+      margin-left: 0.1rem;
+      padding: 0;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+
+      .post-title-link {
+        .icon {
+          width: 1.1rem;
+          height: 1.1rem;
+          margin-right: 0.3rem;
+        }
+      }
+    }
+
+    .post-meta {
+      font-size: 1rem;
+      margin: 1rem 0 1rem 1.2rem;
+      white-space: nowrap;
+    }
+  }
+}
+
+.last-word {
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+</style>

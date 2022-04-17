@@ -34,4 +34,31 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  // archives
+  {
+    path: '/archives',
+    component: () => import('../layouts/archives.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../pages/timeline/index.vue'),
+        meta: {
+          layout: 'archives',
+        },
+      },
+    ],
+  },
+  {
+    path: '/timeline',
+    component: () => import('../layouts/archives.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../pages/timeline/index.vue'),
+        meta: {
+          layout: 'archives',
+        },
+      },
+    ],
+  },
 ]

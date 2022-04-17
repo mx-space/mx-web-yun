@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     YunGoDown: typeof import('./components/yun/YunGoDown.vue')['default']
     YunOverview: typeof import('./components/yun/YunOverview.vue')['default']
     YunPageHeader: typeof import('./components/yun/YunPageHeader.vue')['default']
+    YunPostCollapse: typeof import('./components/yun/YunPostCollapse.vue')['default']
     YunPostMeta: typeof import('./components/yun/YunPostMeta.vue')['default']
     YunSay: typeof import('./components/yun/YunSay.vue')['default']
     YunSidebar: typeof import('./components/yun/YunSidebar.vue')['default']

@@ -4,7 +4,7 @@ import { usePostStore } from '~/stores/post'
 const postStore = usePostStore()
 const frontmatter = computed(() => postStore.currentPostData)
 
-const title = frontmatter.value?.title || ''
+const title = computed(() => frontmatter.value?.title || '')
 </script>
 
 <template>

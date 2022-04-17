@@ -5,6 +5,9 @@ import Base from '../../layouts/base.vue'
 
 <template>
   <Base>
+    <template #header>
+      <slot name="header" />
+    </template>
     <template #sidebar>
       <slot name="sidebar" />
     </template>
