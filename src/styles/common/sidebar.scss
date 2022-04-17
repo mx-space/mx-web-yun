@@ -27,6 +27,6 @@
     transform var(--yun-transition-duration) cubic-bezier(0.19, 1, 0.22, 1) !important;
 
   &.open {
-    transform: translateX(0);
+    transform: translateX(0) ;
   }
 }

@@ -26,6 +26,6 @@ $c-primary: #0078e7 !default;
 @use "./widgets/banner.scss" as *;
 
 // markdown
-@use "./common/markdown.scss";
+@import "./common/markdown.scss";
 
-@use "./css-vars.scss";
+@import "./css-vars.scss";

@@ -2,6 +2,10 @@
 
 .markdown-body {
   --c-toc-link: var(--yun-c-text-light);
+
+  -webkit-text-size-adjust: 100%;
+  font-size: 1rem;
+  overflow-wrap: break-word;
 }
 
 html.dark {

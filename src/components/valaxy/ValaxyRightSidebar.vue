@@ -30,12 +30,12 @@ const app = useAppStore()
     m="l-4"
     text="center"
   >
-    <!-- <h2 v-if="frontmatter.toc !== false" m="t-6 b-2" font="serif black">
+    <h2 m="t-6 b-2" font="serif black">
       {{ t('sidebar.toc') }}
-    </h2> -->
+    </h2>
 
     <div class="right-sidebar-container">
-      <!-- <ValaxyToc v-if="frontmatter.toc !== false" /> -->
+      <ValaxyToc />
 
       <div v-if="$slots.custom" class="custom-container">
         <slot name="custom" />

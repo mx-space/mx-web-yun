@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
 import type { PostModel } from '@mx-space/api-client'
 
@@ -22,6 +23,10 @@ onMounted(() => {
   updateDom()
 })
 
+const route = useRoute()
+onBeforeMount(() => {
+  route.meta.headers = [{ title: 'aaa', level: 1, slug: '/' }]
+})
 // features
 // if (props.frontmatter.katex) useKatex()
 
@@ -35,7 +40,12 @@ onMounted(() => {
   <article v-if="md" class="markdown-body">
     <h1 class="sr-only">{{ frontmatter.title }}</h1>
 
-    <div ref="content" @vnode-updated="updateDom" v-html="md" />
+    <div
+      ref="content"
+      class="max-w-full overflow-hidden"
+      @vnode-updated="updateDom"
+      v-html="md"
+    />
 
     <div m="y-4" class="end flex justify-center items-center">
       <hr class="line inline-flex" w="full" m="!y-2" />

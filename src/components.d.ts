@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     ValaxyPostList: typeof import('./components/valaxy/ValaxyPostList.vue')['default']
     ValaxyRightSidebar: typeof import('./components/valaxy/ValaxyRightSidebar.vue')['default']
     ValaxySidebar: typeof import('./components/valaxy/ValaxySidebar.vue')['default']
+    ValaxyToc: typeof import('./components/valaxy/ValaxyToc.vue')['default']
     YunBackToTop: typeof import('./components/yun/YunBackToTop.vue')['default']
     YunBanner: typeof import('./components/yun/YunBanner.vue')['default']
     YunBase: typeof import('./components/yun/YunBase.vue')['default']

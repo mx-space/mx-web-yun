@@ -4,6 +4,8 @@ import { useAppStore } from '~/stores/app'
 
 const app = useAppStore()
 const isHome = useLayout('home')
+
+console.log(isHome)
 </script>
 
 <template>
@@ -12,7 +14,7 @@ const isHome = useLayout('home')
   <ValaxyHamburger
     :active="app.isSidebarOpen"
     class="menu-btn sidebar-toggle yun-icon-btn"
-    :class="isHome ? '' : 'md:hidden'"
+    :class="isHome ? '' : '!md:hidden'"
     @click="app.toggleSidebar()"
   />
 

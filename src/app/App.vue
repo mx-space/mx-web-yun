@@ -14,6 +14,13 @@ useHead({
   title: seo.title,
   meta: [{ name: 'description', content: seo.description }],
 })
+
+// TODO
+onErrorCaptured((error) => {
+  console.log('error--', error)
+
+  return false
+})
 </script>
 
 <template>

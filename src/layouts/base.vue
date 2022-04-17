@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-const styles = ''
+import { usePostStore } from '~/stores/post'
+
+const postStore = usePostStore()
+const frontmatter = computed(() => postStore.currentPostData)
+
+const title = frontmatter.value?.title || ''
 </script>
 
 <template>
@@ -17,15 +22,10 @@ const styles = ''
       <YunCard
         m="0"
         p="4"
-        class="relative sm:p-6 lg:px-12 xl:px-16"
-        :style="styles"
+        class="relative sm:p-6 lg:px-12 xl:px-16 max-w-full overflow-hidden"
       >
         <slot name="header">
-          <!-- <YunPageHeader
-            :title="title"
-            :icon="frontmatter.icon || icon"
-            :color="frontmatter.color || color"
-          /> -->
+          <YunPageHeader :title="title" />
         </slot>
         <template #content>
           <slot name="content">
@@ -34,23 +34,19 @@ const styles = ''
         </template>
       </YunCard>
 
-      <!-- <slot :frontmatter="frontmatter" /> -->
+      <slot :frontmatter="frontmatter" />
 
-      <!-- <slot name="nav">
-        <YunPostNav v-if="frontmatter.nav !== false" />
-      </slot> -->
+      <slot name="nav">
+        <!--       TODO post nav bar-->
+      </slot>
 
-      <!-- <slot v-if="frontmatter.comment !== false" name="comment">
-        <YunCard
-          w="full"
-          p="4"
-          class="comment sm:p-6 lg:px-12 xl:px-16"
-          :class="frontmatter.nav === false ? 'mt-4' : 0"
-        >
-          TODO <YunWaline v-if="config.comment.waline.enable" />
-          <YunTwikoo v-if="config.comment.twikoo.enable" />
-        </YunCard>
-      </slot> -->
+      <!--      TODO comment-->
+      <!--      <slot v-if="frontmatter.comment !== false" name="comment">-->
+      <!--        <YunCard w="full" p="4" class="comment sm:p-6 lg:px-12 xl:px-16" :class="frontmatter.nav === false ? 'mt-4' : 0">-->
+      <!--          <YunWaline v-if="config.comment.waline.enable" />-->
+      <!--          <YunTwikoo v-if="config.comment.twikoo.enable" />-->
+      <!--        </YunCard>-->
+      <!--      </slot>-->
 
       <ValaxyFooter>
         <slot name="footer" />
@@ -58,11 +54,11 @@ const styles = ''
     </div>
 
     <slot name="right-sidebar">
-      <!-- <ValaxyRightSidebar :frontmatter="frontmatter">
+      <ValaxyRightSidebar :frontmatter="frontmatter">
         <template #custom>
           <slot name="right-custom" />
         </template>
-      </ValaxyRightSidebar> -->
+      </ValaxyRightSidebar>
     </slot>
   </main>
 
@@ -71,6 +67,7 @@ const styles = ''
 
 <style lang="scss">
 @use '~/styles/mixins' as *;
+
 @include xl {
   .content {
     // 8px scrollbar width

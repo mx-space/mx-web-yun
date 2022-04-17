@@ -1,14 +1,10 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-
 import { useLayout } from '~/composables'
 import { useAppStore } from '~/stores/app'
 
 const app = useAppStore()
 
 const isHome = useLayout('home')
-
-const router = useRouter()
 </script>
 
 <template>

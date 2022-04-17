@@ -11,13 +11,15 @@ import { router } from '~/router'
 
 import { setPageContext } from '../composables/use-page-context'
 import App from './App.vue'
+import { createGlobalState } from './state'
 import type { PageContext } from './types'
 // @ts-expect-error
 import messages from '/@locales/messages'
 
 export const head = createHead()
-
 export const pinia = createPinia()
+export const globalState = createGlobalState()
+
 export function createApp(pageContext: PageContext) {
   const { Page, pageProps } = pageContext
   const PageWithLayout = defineComponent({
@@ -42,6 +44,7 @@ export function createApp(pageContext: PageContext) {
   app.use(head)
   app.use(router)
   app.use(pinia)
+  app.use(globalState)
 
   if (!import.meta.env.SSR)
     pinia.state.value = pageContext.pageProps.pinia || {}

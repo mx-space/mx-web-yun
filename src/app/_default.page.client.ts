@@ -1,6 +1,7 @@
 import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client'
 import { getPage } from 'vite-plugin-ssr/client'
 
+import { globalState } from '~/app/app'
 import { router } from '~/router'
 
 import { createApp } from './app'
@@ -15,5 +16,7 @@ async function hydrate() {
 
   const app = createApp(pageContext)
   await router.isReady()
-  app.mount('#app')
+  app.mount('#app').$nextTick(() => {
+    globalState.setHydrate()
+  })
 }

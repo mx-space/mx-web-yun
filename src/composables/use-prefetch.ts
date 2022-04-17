@@ -1,4 +1,7 @@
+import { useGlobalState } from '~/app/state'
+
 export const useUniversalFetch = (fetcher: () => Promise<any>) => {
+  const globalState = useGlobalState()
   const doFetchOnBeforeMount = () => {
     onBeforeMount(() => fetcher())
   }
@@ -8,7 +11,7 @@ export const useUniversalFetch = (fetcher: () => Promise<any>) => {
     onServerPrefetch(() =>
       fetcher().catch((error) => {
         // HACK: 因为 onServerPrefetch 或 async setup 都无法中断 renderToString，所以需要在状态被抛出之前就做一个标记
-        // globalState.setRenderError(error)
+        globalState.setRenderError(error)
         // TODO
         return Promise.reject(error)
       }),
@@ -18,7 +21,7 @@ export const useUniversalFetch = (fetcher: () => Promise<any>) => {
 
   // Client side: SSR
   // Navigation: fetch on before mount
-  if (!import.meta.env.SSR) {
+  if (globalState.isHydrated.value) {
     doFetchOnBeforeMount()
   } else {
     // Hydration: no fetch

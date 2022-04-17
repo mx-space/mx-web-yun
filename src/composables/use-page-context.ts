@@ -6,7 +6,7 @@ import type { App, InjectionKey, Ref } from 'vue'
 
 import { defaultThemeConfig } from '~/config.default'
 
-import type { PageContext, PageProps } from '../renderer/types'
+import type { PageContext, PageProps } from '../app/types'
 
 const pageContextKey: InjectionKey<PageContext> = Symbol('page-context')
 
