@@ -4,8 +4,6 @@ import { useAppStore } from '~/stores/app'
 
 const app = useAppStore()
 const isHome = useLayout('home')
-
-console.log(isHome)
 </script>
 
 <template>

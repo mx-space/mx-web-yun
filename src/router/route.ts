@@ -21,6 +21,20 @@ export const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/:paeg',
+    component: () => import('../layouts/post.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../pages/[page]/index.page.vue'),
+        meta: {
+          layout: 'post',
+        },
+      },
+    ],
+  },
+
+  {
     path: '/posts',
     component: () => import('../layouts/post.vue'),
     children: [
