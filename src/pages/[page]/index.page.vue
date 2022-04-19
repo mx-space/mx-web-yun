@@ -1,14 +1,22 @@
 <script lang="ts" setup>
-import { useUniversalFetch } from '~/composables/use-prefetch'
+import { useRoute } from 'vue-router'
 
-const data = useUniversalFetch(async () => {
-  return {
-    a: 1,
-    b: { c: 2 },
-  }
-}, 'a')
+import YunPageHeader from '~/components/yun/YunPageHeader.vue'
+import { useUniversalFetch } from '~/composables/use-prefetch'
+import { usePageStore } from '~/stores/page'
+import { markdownRender } from '~/utils'
+
+const pageStore = usePageStore()
+const route = useRoute()
+const slug = route.params.page as string
+const data = useUniversalFetch(() => pageStore.fetchPage(slug), `page-${slug}`)
+
+//  const data = computed(() => pageStore)
 </script>
 
 <template>
-  {{ data }}
+  <div v-if="data">
+    <YunPageHeader :title="data.title"> </YunPageHeader>
+    <ValaxyMd :frontmatter="data" :md="markdownRender(data.text)"> </ValaxyMd>
+  </div>
 </template>

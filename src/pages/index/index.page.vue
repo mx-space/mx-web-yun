@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useRoute } from 'vue-router'
+
 import { ClientOnly } from '~/components/ClientOnly'
 import { useUniversalFetch } from '~/composables/use-prefetch'
 import { useHomeStore } from '~/stores/home'
@@ -9,18 +11,23 @@ useUniversalFetch(() => homeStore.fetchHomePostList())
 const data = computed(() => homeStore.homePostListData)
 const posts = computed(() => data?.value?.data)
 const pager = computed(() => data?.value?.pagination)
+const route = useRoute()
+
+watch(
+  () => route.query.page,
+  () => {
+    homeStore.fetchHomePostList()
+  },
+)
 </script>
 
 <template>
   <ClientOnly>
-    <div v-if="data" w="full" p="x-4 lt-sm:0">
-      <template v-if="!posts.length">
-        <div py2 op50>博主还什么都没写哦～</div>
-      </template>
-
-      <Transition v-for="(route, i) in posts" :key="i" name="fade">
-        <ValaxyPostCard :post="route" />
-      </Transition>
-    </div>
+    <ValaxyPostList
+      :posts="posts"
+      :cur-page="pager?.currentPage"
+      :page-size="pager?.totalPage"
+      :total="pager?.total"
+    />
   </ClientOnly>
 </template>

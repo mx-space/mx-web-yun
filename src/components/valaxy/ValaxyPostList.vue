@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-
 import type { PostModel } from '@mx-space/api-client/types/models/post'
 
 import { ClientOnly } from '../ClientOnly'
@@ -10,6 +8,7 @@ const props = withDefaults(
     posts?: PostModel[]
     curPage?: number
     pageSize?: number
+    total?: number
   }>(),
   {
     curPage: 1,
@@ -17,7 +16,7 @@ const props = withDefaults(
   },
 )
 
-const displayedPosts = props.posts
+const displayedPosts = computed(() => props.posts)
 </script>
 
 <template>
@@ -29,14 +28,14 @@ const displayedPosts = props.posts
         </template>
 
         <Transition v-for="(post, i) in displayedPosts" :key="i" name="fade">
-          <PostCard :post="post" />
+          <ValaxyPostCard :post="post" />
         </Transition>
       </div>
 
       <ValaxyPagination
         :cur-page="curPage"
         :page-size="pageSize"
-        :total="posts.length"
+        :total="total"
       />
     </template>
   </ClientOnly>

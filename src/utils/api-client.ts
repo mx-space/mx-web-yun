@@ -3,6 +3,7 @@ import {
   CategoryController,
   LinkController,
   NoteController,
+  PageController,
   PostController,
   SayController,
   SnippetController,
@@ -30,6 +31,7 @@ export const apiClient = createClient(axiosAdaptor)(
       SayController,
       CategoryController,
       SnippetController,
+      PageController,
     ],
   },
 )

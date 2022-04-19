@@ -37,7 +37,7 @@ const showPage = (i: number) => {
 const jumpTo = (page: number) => {
   emit('page-change', page)
   if (page === 1) return '/'
-  else return `/page/${page}`
+  else return `/?page=${page}`
 }
 </script>
 
