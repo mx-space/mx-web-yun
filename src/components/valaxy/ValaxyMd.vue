@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
 
 import type { PostModel } from '@mx-space/api-client'
 
-import { useAplayer, useCodePen, useKatex } from '~/composables'
+import { useUIStore } from '~/stores/ui'
 import { wrapTable } from '~/utils'
 
 const props = defineProps<{
@@ -14,7 +12,7 @@ const props = defineProps<{
   excerpt?: string
 }>()
 
-const content = ref()
+const content = ref<HTMLDivElement>()
 function updateDom() {
   wrapTable(content.value)
 }
@@ -23,10 +21,30 @@ onMounted(() => {
   updateDom()
 })
 
-const route = useRoute()
-onBeforeMount(() => {
-  route.meta.headers = [{ title: 'aaa', level: 1, slug: '/' }]
+const uiStore = useUIStore()
+onMounted(() => {
+  nextTick(() => {
+    if (!content.value) return
+
+    const $ = content.value
+    const headers = [] as any[]
+
+    $.querySelectorAll('h1,h2,h3,h4,h5,h6,h7,h8').forEach((el) => {
+      const level = parseInt(el.tagName.toLowerCase().slice(1))
+      const id = el.id
+      headers.push({
+        level,
+        title: el.textContent?.replace(/#$/, '').trim(),
+        slug: id,
+      })
+    })
+
+    uiStore.setToc(headers)
+  })
 })
+
+onBeforeUnmount(() => uiStore.setToc([]))
+
 // features
 // if (props.frontmatter.katex) useKatex()
 
@@ -40,12 +58,7 @@ onBeforeMount(() => {
   <article v-if="md" class="markdown-body">
     <h1 class="sr-only">{{ frontmatter.title }}</h1>
 
-    <div
-      ref="content"
-      class="max-w-full overflow-hidden"
-      @vnode-updated="updateDom"
-      v-html="md"
-    />
+    <div ref="content" @vnode-updated="updateDom" v-html="md" />
 
     <div m="y-4" class="end flex justify-center items-center">
       <hr class="line inline-flex" w="full" m="!y-2" />

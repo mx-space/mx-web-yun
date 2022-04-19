@@ -5,7 +5,9 @@ import { setupMarkdownPlugins } from '~/markdown/plugins'
 
 const markdownIt = new MarkdownIt()
 
-const render = setupMarkdownPlugins(markdownIt, {})
+const render = setupMarkdownPlugins(markdownIt, {
+  html: true,
+})
 
 export const excerpt_separator = '<!-- more -->'
 export const excerptMarkdownAndRenderToHtml = (markdown: string) => {

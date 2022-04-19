@@ -1,4 +1,5 @@
 import '@unocss/reset/tailwind.css'
+import 'star-markdown-css'
 import '../styles/index.scss'
 import 'uno.css'
 

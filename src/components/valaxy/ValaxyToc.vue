@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
 
 import { useActiveSidebarLinks } from '~/composables/use-sidebar-toc'
+import { useUIStore } from '~/stores/ui'
 
-const route = useRoute()
-const headers = computed(() => route.meta.headers)
+const uiStore = useUIStore()
+const headers = computed(() => uiStore.toc)
 
 const container = ref()
 const marker = ref()
