@@ -22,7 +22,7 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/:page',
-    component: () => import('../layouts/post.vue'),
+    component: () => import('../layouts/page.vue'),
     children: [
       {
         path: '',
