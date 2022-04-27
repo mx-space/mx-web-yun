@@ -6,7 +6,7 @@ import {
 
 const themeConfig = useThemeConfig()
 const aggregateData = useAggregateData()
-const user = aggregateData.user
+const user = aggregateData!.user
 
 const avatar = user.avatar
 </script>
@@ -45,7 +45,7 @@ const avatar = user.avatar
     <br />
   </div>
 
-  <!-- <YunConfig /> -->
+  <YunConfig />
 </template>
 
 <style lang="scss">

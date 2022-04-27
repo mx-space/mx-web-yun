@@ -89,7 +89,7 @@ export const defaultThemeConfig: ThemeConfig = {
       name: 'Travelling',
       link: 'https://travellings.link',
       icon: 'i-ri-train-line',
-      color: '#333',
+      color: 'var(--yun-c-text)',
     },
   ],
 

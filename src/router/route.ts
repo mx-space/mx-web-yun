@@ -71,6 +71,18 @@ export const routes: RouteRecordRaw[] = [
     path: '/categories',
     component: () => import('../layouts/categories.vue'),
   },
+
+  {
+    path: '/',
+    component: () => import('../layouts/base.vue'),
+    children: [
+      {
+        path: '/friends',
+        component: () => import('../pages/friends/index.vue'),
+      },
+    ],
+  },
+
   {
     path: '/:page',
     component: () => import('../layouts/page.vue'),

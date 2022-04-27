@@ -42,6 +42,7 @@ const config: UserConfig = {
         'i-ri-folder-2-line',
         'i-ri-price-tag-3-line',
         'i-ri-cloud-line',
+        'i-ri-clipboard-line',
 
         'i-ri-external-link-line',
         'i-ri-bilibili-line',

@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     YunCategories: typeof import('./components/yun/YunCategories.vue')['default']
     YunCategory: typeof import('./components/yun/YunCategory.vue')['default']
     YunConfig: typeof import('./components/yun/YunConfig.vue')['default']
+    YunGirls: typeof import('./components/yun/YunGirls.vue')['default']
     YunGoDown: typeof import('./components/yun/YunGoDown.vue')['default']
     YunOverview: typeof import('./components/yun/YunOverview.vue')['default']
     YunPageHeader: typeof import('./components/yun/YunPageHeader.vue')['default']
