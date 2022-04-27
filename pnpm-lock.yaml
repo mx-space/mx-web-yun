@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@antfu/eslint-config': 0.20.2
+  '@ctrl/tinycolor': 3.4.1
   '@iconify-json/ant-design': ^1.1.1
   '@iconify-json/ri': 1.1.1
   '@iconify-json/simple-icons': ^1.1.8
@@ -62,6 +63,7 @@ specifiers:
   vue-router: 4.0.14
 
 dependencies:
+  '@ctrl/tinycolor': 3.4.1
   '@iconify-json/ant-design': 1.1.1
   '@iconify-json/ri': 1.1.1
   '@iconify-json/simple-icons': 1.1.8
@@ -438,6 +440,11 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@cspotcode/source-map-consumer': 0.8.0
+    dev: false
+
+  /@ctrl/tinycolor/3.4.1:
+    resolution: {integrity: sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==}
+    engines: {node: '>=10'}
     dev: false
 
   /@eslint/eslintrc/1.2.1:

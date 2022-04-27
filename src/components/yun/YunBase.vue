@@ -1,19 +1,23 @@
-<script setup lang="ts">
-// export layouts/base.vue as components
+<script lang="ts" setup>
 import Base from '../../layouts/base.vue'
 </script>
-
 <template>
   <Base>
-    <template #header>
-      <slot name="header" />
-    </template>
     <template #sidebar>
       <slot name="sidebar" />
+    </template>
+    <template v-if="$slots['sidebar-child']" #sidebar-child>
+      <slot name="sidebar-child" />
+    </template>
+    <template #header>
+      <slot name="header" />
     </template>
     <template #content>
       <slot name="content" />
     </template>
+
+    <slot />
+
     <template #nav>
       <slot name="nav" />
     </template>
@@ -25,6 +29,14 @@ import Base from '../../layouts/base.vue'
     </template>
     <template #right-sidebar>
       <slot name="right-sidebar" />
+    </template>
+    <template #right-custom>
+      <hr opacity="10" m="10" />
+      <p font="serif black">
+        🌟 广告位招租 🌟
+        <br />
+        <del>云游君在线征婚</del>
+      </p>
     </template>
   </Base>
 </template>

@@ -11,6 +11,8 @@ const { t } = useI18n()
 
 const props = defineProps<{
   posts: PostModel[]
+
+  notTimeline?: boolean
 }>()
 
 const years = ref<number[]>([])
@@ -43,32 +45,61 @@ const timelineStore = useTimelineStore()
     <div w="full" text="center" class="yun-text-light" p="2">
       {{ t('counter.archives', posts.length) }}
     </div>
+    <div v-if="!notTimeline">
+      <div v-for="year in timelineStore.sortedYears" :key="year" m="b-6">
+        <div class="collection-title">
+          <h2
+            :id="`#archive-year-${year}`"
+            class="archive-year"
+            text="4xl"
+            p="y-2"
+          >
+            {{ year }}
+          </h2>
+        </div>
 
-    <div v-for="year in timelineStore.sortedYears" :key="year" m="b-6">
-      <div class="collection-title">
-        <h2
-          :id="`#archive-year-${year}`"
-          class="archive-year"
-          text="4xl"
-          p="y-2"
+        <article
+          v-for="post in timelineStore.sortedMap.get(year)"
+          :key="post.id"
+          class="post-item"
         >
-          {{ year }}
-        </h2>
+          <header class="post-header">
+            <div class="post-meta">
+              <time
+                v-if="post.date"
+                class="post-time"
+                font="mono"
+                opacity="80"
+                >{{ formatDate(post.date, 'MM-DD') }}</time
+              >
+            </div>
+            <h2 class="post-title" font="serif black">
+              <router-link :to="post.as" class="post-title-link">
+                {{ post.title }}
+              </router-link>
+            </h2>
+          </header>
+        </article>
       </div>
+    </div>
 
-      <article
-        v-for="post in timelineStore.sortedMap.get(year)"
-        :key="post.id"
-        class="post-item"
-      >
+    <div v-else>
+      <article v-for="post in posts" :key="post.id" class="post-item">
         <header class="post-header">
           <div class="post-meta">
-            <time v-if="post.date" class="post-time" font="mono" opacity="80">{{
-              formatDate(post.date, 'MM-DD')
-            }}</time>
+            <time
+              v-if="post.created"
+              class="post-time"
+              font="mono"
+              opacity="80"
+              >{{ formatDate(post.created, 'YYYY-MM-DD') }}</time
+            >
           </div>
           <h2 class="post-title" font="serif black">
-            <router-link :to="post.as" class="post-title-link">
+            <router-link
+              :to="'/posts/' + post.category.slug + '/' + post.slug"
+              class="post-title-link"
+            >
               {{ post.title }}
             </router-link>
           </h2>

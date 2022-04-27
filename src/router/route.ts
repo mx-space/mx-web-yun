@@ -20,19 +20,6 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
-  {
-    path: '/:page',
-    component: () => import('../layouts/page.vue'),
-    children: [
-      {
-        path: '',
-        component: () => import('../pages/[page]/index.page.vue'),
-        meta: {
-          layout: 'post',
-        },
-      },
-    ],
-  },
 
   {
     path: '/posts',
@@ -71,6 +58,24 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('../pages/timeline/index.vue'),
         meta: {
           layout: 'archives',
+        },
+      },
+    ],
+  },
+
+  {
+    path: '/tags',
+    component: () => import('../layouts/tags.vue'),
+  },
+  {
+    path: '/:page',
+    component: () => import('../layouts/page.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('../pages/[page]/index.page.vue'),
+        meta: {
+          layout: 'post',
         },
       },
     ],

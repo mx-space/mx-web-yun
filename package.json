@@ -18,6 +18,7 @@
     "server:prod": "cross-env NODE_ENV=production ts-node ./server"
   },
   "dependencies": {
+    "@ctrl/tinycolor": "3.4.1",
     "@iconify-json/ant-design": "^1.1.1",
     "@iconify-json/ri": "1.1.1",
     "@iconify-json/simple-icons": "^1.1.8",
