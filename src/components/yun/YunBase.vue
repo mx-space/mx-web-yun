@@ -35,7 +35,8 @@ import Base from '../../layouts/base.vue'
       <p font="serif black">
         🌟 广告位招租 🌟
         <br />
-        <del>云游君在线征婚</del>
+        <del>云游君在线征婚</del><br />
+        <del>Innei 在线找女友</del>
       </p>
     </template>
   </Base>

@@ -22,7 +22,7 @@ const title = computed(() => frontmatter.value?.title || '')
       <YunCard
         m="0"
         p="4"
-        class="relative sm:p-6 lg:px-12 xl:px-16 max-w-full overflow-hidden"
+        class="relative sm:p-6 lg:px-12 xl:px-16 max-w-full overflow-hidden w-full"
       >
         <slot name="header">
           <YunPageHeader :title="title" />

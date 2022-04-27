@@ -5,6 +5,10 @@ import { useAppStore } from '~/stores/app'
 const app = useAppStore()
 
 const isHome = useLayout('home')
+
+onMounted(() => {
+  app.toggleSidebar(false)
+})
 </script>
 
 <template>

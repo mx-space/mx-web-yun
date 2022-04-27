@@ -23,6 +23,8 @@ declare module '@vue/runtime-core' {
     YunBanner: typeof import('./components/yun/YunBanner.vue')['default']
     YunBase: typeof import('./components/yun/YunBase.vue')['default']
     YunCard: typeof import('./components/yun/YunCard.vue')['default']
+    YunCategories: typeof import('./components/yun/YunCategories.vue')['default']
+    YunCategory: typeof import('./components/yun/YunCategory.vue')['default']
     YunConfig: typeof import('./components/yun/YunConfig.vue')['default']
     YunGoDown: typeof import('./components/yun/YunGoDown.vue')['default']
     YunOverview: typeof import('./components/yun/YunOverview.vue')['default']

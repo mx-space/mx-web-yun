@@ -19,6 +19,6 @@ export function createRouter() {
 
 export const router = createRouter()
 
-router.afterEach(() => {
+router.beforeEach(() => {
   springScrollToTop()
 })
