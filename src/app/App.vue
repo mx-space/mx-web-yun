@@ -23,7 +23,7 @@ const _error = ref<Error>()
 const globalState = useGlobalState()
 
 const error = computed(
-  () => _error.value || (globalState.renderError as any as Error),
+  () => _error.value || (globalState.renderError.value as any as Error),
 )
 
 // TODO

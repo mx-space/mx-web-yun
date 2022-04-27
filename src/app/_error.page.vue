@@ -9,7 +9,7 @@ const props = defineProps<{
 const router = useRouter()
 const returnHome = () => {
   props.onErrorHandled()
-  router.replace('/')
+  location.href = '/'
 }
 </script>
 

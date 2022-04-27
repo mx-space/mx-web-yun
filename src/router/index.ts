@@ -4,6 +4,8 @@ import {
   createWebHistory,
 } from 'vue-router'
 
+import { springScrollToTop } from '~/utils/spring'
+
 import { routes } from './route'
 
 export function createRouter() {
@@ -16,3 +18,7 @@ export function createRouter() {
 }
 
 export const router = createRouter()
+
+router.afterEach(() => {
+  springScrollToTop()
+})
