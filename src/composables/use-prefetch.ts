@@ -42,8 +42,13 @@ export const useUniversalFetch = <T>(
 
   // Client side: SSR
   // Navigation: fetch on before mount
-  if (globalState.isHydrated.value) doFetchOnBeforeMount()
-  else hydrationKey && (dataRef.value = prefetchStore.getData(hydrationKey))
+  if (globalState.isHydrated.value) {
+    doFetchOnBeforeMount()
+  } else {
+    hydrationKey &&
+      (dataRef.value =
+        prefetchStore.getData(hydrationKey) || doFetchOnBeforeMount())
+  }
   // Hydration: no fetch
   // onServerPreFetch: https://github.com/vuejs/composition-api/pull/198/files
   // isHydrating: https://github.com/vuejs/vue-next/issues/1723

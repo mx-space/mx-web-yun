@@ -3,11 +3,11 @@ import rmd from 'remove-markdown'
 
 import { setupMarkdownPlugins } from '~/markdown/plugins'
 
-const markdownIt = new MarkdownIt()
-
-const render = setupMarkdownPlugins(markdownIt, {
+const markdownIt = new MarkdownIt({
   html: true,
 })
+
+const render = setupMarkdownPlugins(markdownIt)
 
 export const excerpt_separator = '<!-- more -->'
 export const excerptMarkdownAndRenderToHtml = (markdown: string) => {
