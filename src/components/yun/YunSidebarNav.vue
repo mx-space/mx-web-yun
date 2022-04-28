@@ -6,11 +6,6 @@ import { useThemeConfig } from '~/composables/use-page-context'
 const { t } = useI18n()
 
 const themeConfig = useThemeConfig()
-const posts = [] as any[]
-const categories = {
-  children: [],
-} as any
-const tags = [] as any[]
 </script>
 
 <template>
@@ -29,7 +24,6 @@ const tags = [] as any[]
       :title="t('menu.archives')"
     >
       <div class="icon" i-ri-archive-line />
-      <span class="count">{{ posts.length }}</span>
     </router-link>
     <router-link
       class="site-link-item"
@@ -37,11 +31,9 @@ const tags = [] as any[]
       :title="t('menu.categories')"
     >
       <div class="icon" i-ri-folder-2-line />
-      <span class="count">{{ Array.from(categories.children).length }}</span>
     </router-link>
     <router-link class="site-link-item" to="/tags/" :title="t('menu.tags')">
       <div class="icon" i-ri-price-tag-3-line />
-      <span class="count">{{ Array.from(tags).length }}</span>
     </router-link>
 
     <router-link
@@ -72,6 +64,7 @@ const tags = [] as any[]
   padding: 0 15px;
   align-items: center;
   border-left: 1px solid get-css-var('c-gray');
+  justify-content: center;
 
   flex-direction: column;
 

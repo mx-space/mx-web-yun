@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { PostModel } from '@mx-space/api-client/types/models/post'
 
+import { usePrism } from '~/composables/widgets/use-prism'
+
 import { ClientOnly } from '../ClientOnly'
 
 const props = withDefaults(
@@ -17,13 +19,14 @@ const props = withDefaults(
 )
 
 const displayedPosts = computed(() => props.posts)
+usePrism()
 </script>
 
 <template>
   <ClientOnly>
     <template #default>
       <div w="full" p="x-4 lt-sm:0">
-        <template v-if="!displayedPosts.length">
+        <template v-if="!displayedPosts?.length">
           <div py2 op50>博主还什么都没写哦～</div>
         </template>
 

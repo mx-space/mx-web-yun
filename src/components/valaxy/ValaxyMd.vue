@@ -3,11 +3,13 @@ import { onMounted, ref } from 'vue'
 
 import type { PostModel } from '@mx-space/api-client'
 
+import { useAplayer, useCodePen, useKatex } from '~/composables'
+import { usePrism } from '~/composables/widgets/use-prism'
 import { useUIStore } from '~/stores/ui'
 import { wrapTable } from '~/utils'
 
 const props = defineProps<{
-  frontmatter: PostModel
+  post: PostModel
   md: string
   excerpt?: string
 }>()
@@ -22,41 +24,49 @@ onMounted(() => {
 })
 
 const uiStore = useUIStore()
-onMounted(() => {
-  nextTick(() => {
-    if (!content.value) return
 
-    const $ = content.value
-    const headers = [] as any[]
+const { highlightAll } = usePrism()
+watch(
+  () => props.md,
+  () => {
+    nextTick(() => {
+      if (!content.value) return
 
-    $.querySelectorAll('h1,h2,h3,h4,h5,h6,h7,h8').forEach((el) => {
-      const level = parseInt(el.tagName.toLowerCase().slice(1))
-      const id = el.id
-      headers.push({
-        level,
-        title: el.textContent?.replace(/#$/, '').trim(),
-        slug: id,
+      highlightAll()
+
+      const $ = content.value
+      const headers = [] as any[]
+
+      $.querySelectorAll('h1,h2,h3,h4,h5,h6,h7,h8').forEach((el) => {
+        const level = parseInt(el.tagName.toLowerCase().slice(1))
+        const id = el.id
+        headers.push({
+          level,
+          title: el.textContent?.replace(/#$/, '').trim(),
+          slug: id,
+        })
       })
-    })
 
-    uiStore.setToc(headers)
-  })
-})
+      uiStore.setToc(headers)
+    })
+  },
+  { immediate: true },
+)
 
 onBeforeUnmount(() => uiStore.setToc([]))
 
 // features
-// if (props.frontmatter.katex) useKatex()
+if (props.post.meta?.katex) useKatex()
 
-// // widgets
-// if (props.frontmatter.aplayer) useAplayer()
+// widgets
+if (props.post.meta?.aplayer) useAplayer()
 
-// if (props.frontmatter.codepen) useCodePen()
+if (props.post.meta?.codepen) useCodePen()
 </script>
 
 <template>
   <article v-if="md" class="markdown-body">
-    <h1 class="sr-only">{{ frontmatter.title }}</h1>
+    <h1 class="sr-only">{{ post.title }}</h1>
 
     <div ref="content" @vnode-updated="updateDom" v-html="md" />
 

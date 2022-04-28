@@ -8,7 +8,6 @@ import TOC from 'markdown-it-table-of-contents'
 import TaskLists from 'markdown-it-task-lists'
 
 import { headingPlugin } from './headings'
-import { highlight } from './highlight'
 import { highlightLinePlugin, preWrapperPlugin } from './highlightLines'
 import { containerPlugin } from './markdown-it-container'
 import Katex from './markdown-it-katex'
@@ -44,9 +43,6 @@ export function setupMarkdownPlugins(
   md: MarkdownIt,
   mdOptions: MarkdownOptions = {},
 ) {
-  md.set({
-    highlight,
-  })
   md.use(highlightLinePlugin)
     .use(preWrapperPlugin)
     .use(containerPlugin)

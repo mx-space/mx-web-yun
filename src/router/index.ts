@@ -4,8 +4,6 @@ import {
   createWebHistory,
 } from 'vue-router'
 
-import { springScrollToTop } from '~/utils/spring'
-
 import { routes } from './route'
 
 export function createRouter() {
@@ -19,6 +17,7 @@ export function createRouter() {
 
 export const router = createRouter()
 
-router.beforeEach(() => {
-  springScrollToTop()
+router.beforeEach((to, from) => {
+  if (to.path !== from.path && !import.meta.env.SSR)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
 })

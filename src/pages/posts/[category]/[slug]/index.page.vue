@@ -21,6 +21,6 @@ useUniversalFetch(() =>
 
 <template>
   <div v-if="data">
-    <ValaxyMd :frontmatter="data" :md="markdownRender(data.text)"> </ValaxyMd>
+    <ValaxyMd :post="data" :md="markdownRender(data.text)"> </ValaxyMd>
   </div>
 </template>
