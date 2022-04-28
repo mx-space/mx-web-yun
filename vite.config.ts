@@ -44,6 +44,9 @@ const config: UserConfig = {
         'i-ri-cloud-line',
         'i-ri-clipboard-line',
 
+        'i-ri-genderless-line',
+        'i-ri-women-line',
+
         'i-ri-external-link-line',
         'i-ri-bilibili-line',
         'i-ri-douban-line',

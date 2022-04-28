@@ -1,18 +1,23 @@
 <script lang="ts" setup>
-import { useRandomData } from '~/composables'
 import { anonymousImage } from '~/constants'
 import type { GirlType } from '~/types/girls'
 
 const onImgError = (e: Event) => {
-  ;(e.target as HTMLImageElement).src = anonymousImage
+  const $ = e.target as HTMLImageElement
+  $.src = anonymousImage
+
+  $.onerror = () => {}
 }
 
 const props = defineProps<{
-  girls: GirlType[] | string
+  girls: GirlType[]
   random?: boolean
 }>()
 
-const { data } = useRandomData(props.girls, props.random)
+const data = computed(() =>
+  // eslint-disable-next-line vue/no-mutating-props
+  props.random ? props.girls.sort(() => Math.random() - 0.5) : props.girls,
+)
 </script>
 
 <template>
@@ -30,7 +35,7 @@ const { data } = useRandomData(props.girls, props.random)
             <img
               class="girl-avatar m-auto"
               loading="lazy"
-              :src="girl.avatar"
+              :src="girl.avatar || anonymousImage"
               :alt="girl.name"
               :onError="onImgError"
             />

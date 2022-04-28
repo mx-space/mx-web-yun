@@ -20,68 +20,47 @@ export const defaultThemeConfig: ThemeConfig = {
       color: 'orange',
     },
     {
-      name: 'QQ 群 1050458482',
-      link: 'https://qm.qq.com/cgi-bin/qm/qr?k=kZJzggTTCf4SpvEQ8lXWoi5ZjhAx0ILZ&jump_from=webapi',
+      name: 'QQ 群 615052447',
+      link: 'https://jq.qq.com/?_wv=1027&k=5t9N0mw',
       icon: 'i-ri-qq-line',
       color: '#12B7F5',
     },
     {
       name: 'GitHub',
-      link: 'https://github.com/YunYouJun',
+      link: 'https://github.com/Innei',
       icon: 'i-ri-github-line',
       color: '#6e5494',
     },
-    {
-      name: '微博',
-      link: 'https://weibo.com/jizhideyunyoujun',
-      icon: 'i-ri-weibo-line',
-      color: '#E6162D',
-    },
-    {
-      name: '豆瓣',
-      link: 'https://www.douban.com/people/yunyoujun/',
-      icon: 'i-ri-douban-line',
-      color: '#007722',
-    },
+
     {
       name: '网易云音乐',
-      link: 'https://music.163.com/#/user/home?id=247102977',
+      link: 'https://music.163.com/#/user/home?id=84302804',
       icon: 'i-ri-netease-cloud-music-line',
       color: '#C20C0C',
     },
     {
       name: '知乎',
-      link: 'https://www.zhihu.com/people/yunyoujun/',
+      link: 'https://www.zhihu.com/people/innei/',
       icon: 'i-ri-zhihu-line',
       color: '#0084FF',
     },
     {
       name: '哔哩哔哩',
-      link: 'https://space.bilibili.com/1579790',
+      link: 'https://space.bilibili.com/26578164',
       icon: 'i-ri-bilibili-line',
       color: '#FF8EB3',
     },
-    {
-      name: '微信公众号',
-      link: 'https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/about/white-qrcode-and-search.jpg',
-      icon: 'i-ri-wechat-2-line',
-      color: '#1AAD19',
-    },
+
     {
       name: 'Twitter',
-      link: 'https://twitter.com/YunYouJun',
+      link: 'https://twitter.com/__oQuery',
       icon: 'i-ri-twitter-line',
       color: '#1da1f2',
     },
-    {
-      name: 'Telegram Channel',
-      link: 'https://t.me/elpsycn',
-      icon: 'i-ri-telegram-line',
-      color: '#0088CC',
-    },
+
     {
       name: 'E-Mail',
-      link: 'mailto:me@yunyoujun.cn',
+      link: 'mailto:i@innei.ren',
       icon: 'i-ri-mail-line',
       color: '#8E71C1',
     },
@@ -116,7 +95,14 @@ export const defaultThemeConfig: ThemeConfig = {
     },
   },
 
-  pages: [],
+  pages: [
+    {
+      name: '我的小伙伴们',
+      url: '/friends/',
+      icon: 'i-ri-genderless-line',
+      color: 'dodgerblue',
+    },
+  ],
 
   footer: {
     since: 2022,
@@ -196,20 +182,8 @@ export const defaultThemeConfig: ThemeConfig = {
     title: '我很可爱，请给我钱',
     methods: [
       {
-        name: '支付宝',
-        url: 'https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/alipay-qrcode.jpg',
-        color: '#00A3EE',
-        icon: 'i-ri-alipay-line',
-      },
-      {
-        name: 'QQ 支付',
-        url: 'https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/qqpay-qrcode.png',
-        color: '#12B7F5',
-        icon: 'i-ri-qq-line',
-      },
-      {
         name: '微信支付',
-        url: 'https://cdn.jsdelivr.net/gh/YunYouJun/cdn/img/donate/wechatpay-qrcode.jpg',
+        url: 'https://cdn.jsdelivr.net/gh/Innei/img-bed@master/20191211132347.png',
         color: '#2DC100',
         icon: 'i-ri-wechat-pay-line',
       },

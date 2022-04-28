@@ -6,17 +6,17 @@ const themeConfig = useThemeConfig()
 
 <template>
   <div class="links">
-    <a
+    <router-link
       v-for="(item, i) in themeConfig.pages"
       :key="i"
       class="link-item yun-icon-btn"
-      :href="item.url"
+      :to="item.url"
       :title="item.name"
       :target="item.url.startsWith('http') ? '_blank' : ''"
       :style="`color:${item.color}`"
     >
       <div :class="item.icon" class="icon" />
-    </a>
+    </router-link>
   </div>
 </template>
 

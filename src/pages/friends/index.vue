@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import type { LinkModel } from '@mx-space/api-client'
-
+import { ClientOnly } from '~/components/ClientOnly'
 import { useUniversalFetch } from '~/composables/use-prefetch'
 import type { GirlType } from '~/types/girls'
 import { apiClient } from '~/utils'
@@ -12,6 +11,7 @@ const friends = useUniversalFetch(
     }),
   'friends',
 )
+
 const girls = computed<GirlType[]>(() => {
   return (
     friends.value?.map((f) => ({
@@ -25,7 +25,9 @@ const girls = computed<GirlType[]>(() => {
 </script>
 
 <template>
-  <YunPageHeader title="友链" />
-  <div class="text-center" m="2" title="我全都要！">!大家都是我的天使!</div>
-  <YunGirls :girls="girls" random />
+  <ClientOnly>
+    <YunPageHeader title="友链" />
+    <div class="text-center" m="2" title="我全都要！">!大家都是我的天使!</div>
+    <YunGirls :girls="girls" random />
+  </ClientOnly>
 </template>
