@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import fastify from 'fastify'
-import express from 'fastify-express'
 import proxy from 'fastify-http-proxy'
 import { resolve } from 'path'
 import type { ViteDevServer } from 'vite'
 import { createPageRenderer } from 'vite-plugin-ssr'
+
+import express from '@fastify/express'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isDev = !isProduction
