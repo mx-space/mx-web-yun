@@ -1,5 +1,5 @@
 <p align="center">
-<img width="128" src="docs/public/logo.gif">
+<img width="128" src="https://fastly.jsdelivr.net/gh/YunYouJun/hexo-theme-yun@dev/docs/public/logo.gif">
 </p>
 
 <p align="center">
