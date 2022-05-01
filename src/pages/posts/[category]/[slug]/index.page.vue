@@ -18,6 +18,10 @@ useUniversalFetch(() =>
     return res
   }),
 )
+
+onUnmounted(() => {
+  postStore.setCurrentPostData(null!)
+})
 </script>
 
 <template>

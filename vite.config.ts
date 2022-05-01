@@ -22,7 +22,6 @@ import vue from '@vitejs/plugin-vue'
 import { createI18nPlugin } from './plugins/i18n'
 
 const config: UserConfig = {
-  base: '',
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './src'),
