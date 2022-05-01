@@ -14,6 +14,8 @@ const props = defineProps<{
    * Page Size
    */
   pageSize: number
+
+  jumpToRoute?: (page: number) => void
 }>()
 
 const emit = defineEmits(['page-change'])
@@ -36,6 +38,9 @@ const showPage = (i: number) => {
 
 const jumpTo = (page: number) => {
   emit('page-change', page)
+  if (props.jumpToRoute)
+    return props.jumpToRoute(page)
+
   if (page === 1) return '/'
   else return `/?page=${page}`
 }

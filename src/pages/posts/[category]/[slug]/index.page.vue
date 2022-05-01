@@ -22,5 +22,9 @@ useUniversalFetch(() =>
 <template>
   <div v-if="data">
     <ValaxyMd :post="data" :md="markdownRender(data.text)"> </ValaxyMd>
+
+    <slot name="comment">
+      <Comments :id="data.id" />
+    </slot>
   </div>
 </template>

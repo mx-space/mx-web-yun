@@ -1,6 +1,7 @@
 import {
   AggregateController,
   CategoryController,
+  CommentController,
   LinkController,
   NoteController,
   PageController,
@@ -32,6 +33,7 @@ export const apiClient = createClient(axiosAdaptor)(
       CategoryController,
       SnippetController,
       PageController,
+      CommentController,
     ],
   },
 )

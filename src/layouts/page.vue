@@ -1,13 +1,7 @@
 <script lang="ts" setup>
 import { useThemeConfig } from '~/composables'
-import { useFullUrl } from '~/composables/use-full-url'
-import { usePostStore } from '~/stores/post'
 
 const config = useThemeConfig()
-
-const url = useFullUrl()
-const store = usePostStore()
-const data = computed(() => store.currentPostData)
 </script>
 
 <template>

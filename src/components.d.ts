@@ -5,6 +5,9 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Comment: typeof import('./components/extra/Comments/comment.vue')['default']
+    Comments: typeof import('./components/extra/Comments/index.vue')['default']
+    RelativeTime: typeof import('./components/extra/Time/RelativeTime.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ValaxyAppLink: typeof import('./components/valaxy/ValaxyAppLink.vue')['default']
