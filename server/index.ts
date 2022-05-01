@@ -15,9 +15,7 @@ const manifest = require(`${dist}/client/ssr-manifest.json`)
 
 // This is the server renderer we just built
 /** @type { import('../dist/server/main')} */
-const { default: renderPage } =
-  // @ts-expect-error
-  require(`${dist}/server`)
+const { default: renderPage } = require(`${dist}/server`)
 
 startServer()
 

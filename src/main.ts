@@ -40,7 +40,7 @@ export default viteSSR(
   async ({
     app,
     initialState,
-    router,
+    // router,
     // url,
     // isClient,
     // initialRoute,

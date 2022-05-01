@@ -13,6 +13,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import type { UserConfig } from 'vite'
+import checker from 'vite-plugin-checker'
 import ssr from 'vite-ssr/plugin.js'
 
 import vueI18n from '@intlify/vite-plugin-vue-i18n'
@@ -21,6 +22,7 @@ import vue from '@vitejs/plugin-vue'
 
 import { createI18nPlugin } from './plugins/i18n'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const isDev = process.env.NODE_ENV === 'development'
 
 const config: UserConfig = {
@@ -34,6 +36,7 @@ const config: UserConfig = {
     vue({
       reactivityTransform: true,
     }),
+    checker({ typescript: true, vueTsc: true, enableBuild: true }),
     Unocss({
       safelist: [
         ...'animate-fade-in m-auto text-left'.split(' '),
