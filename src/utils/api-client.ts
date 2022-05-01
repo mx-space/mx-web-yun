@@ -21,7 +21,7 @@ const axios = axiosAdaptor.default.defaults
 
 export const apiClient = createClient(axiosAdaptor)(
   import.meta.env.SSR
-    ? `http://127.0.0.1:${import.meta.env.PORT || 4858}/api`
+    ? `http://127.0.0.1:${import.meta.env.PORT || 4859}/api`
     : '/api',
   {
     controllers: [
