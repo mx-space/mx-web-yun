@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
 
+import Box from '~/components/extra/Comments/box.vue'
 import ValaxyMd from '~/components/valaxy/ValaxyMd.vue'
 import { useUniversalFetch } from '~/composables/use-prefetch'
 import { usePostStore } from '~/stores/post'
@@ -24,6 +25,7 @@ useUniversalFetch(() =>
     <ValaxyMd :post="data" :md="markdownRender(data.text)"> </ValaxyMd>
 
     <slot name="comment">
+      <Box v-if="data.allowComment" :id="data.id" />
       <Comments :id="data.id" />
     </slot>
   </div>
