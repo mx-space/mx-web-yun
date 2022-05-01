@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 
 import Box from '~/components/extra/Comments/box.vue'
 import Comments from '~/components/extra/Comments/index.vue'
+import Loading from '~/components/extra/Loading/index.vue'
 import YunPageHeader from '~/components/yun/YunPageHeader.vue'
 import { useUniversalFetch } from '~/composables/use-prefetch'
 import { usePageStore } from '~/stores/page'
@@ -23,4 +24,5 @@ const data = useUniversalFetch(() => pageStore.fetchPage(slug), `page-${slug}`)
       <Comments :id="data.id" />
     </slot>
   </div>
+  <Loading v-else />
 </template>

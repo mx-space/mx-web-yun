@@ -3,6 +3,7 @@ import { useLayout } from '~/composables/use-layout'
 import { useAppStore } from '~/stores/app'
 
 const app = useAppStore()
+
 const isHome = useLayout('home')
 </script>
 

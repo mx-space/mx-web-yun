@@ -5,5 +5,3 @@ import { useTimelineStore } from '~/stores/timeline'
 const ts = useTimelineStore()
 useUniversalFetch(() => ts.fetch())
 </script>
-
-<template></template>

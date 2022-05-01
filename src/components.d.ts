@@ -8,6 +8,8 @@ declare module '@vue/runtime-core' {
     Box: typeof import('./components/extra/Comments/box.vue')['default']
     Comment: typeof import('./components/extra/Comments/comment.vue')['default']
     Comments: typeof import('./components/extra/Comments/index.vue')['default']
+    Loading: typeof import('./components/extra/Loading/index.vue')['default']
+    LoadingView: typeof import('./components/extra/Loading/LoadingView.vue')['default']
     RelativeTime: typeof import('./components/extra/Time/RelativeTime.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

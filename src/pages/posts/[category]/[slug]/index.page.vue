@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router'
 
 import Box from '~/components/extra/Comments/box.vue'
+import Loading from '~/components/extra/Loading/index.vue'
 import ValaxyMd from '~/components/valaxy/ValaxyMd.vue'
 import { useUniversalFetch } from '~/composables/use-prefetch'
 import { usePostStore } from '~/stores/post'
@@ -33,4 +34,5 @@ onUnmounted(() => {
       <Comments :id="data.id" />
     </slot>
   </div>
+  <Loading v-else />
 </template>

@@ -1,11 +1,3 @@
-import { defineComponent, onMounted, ref } from 'vue'
+import { ClientOnly as _ } from 'vite-ssr'
 
-export const ClientOnly = defineComponent({
-  setup(_, { slots }) {
-    const show = ref(false)
-    onMounted(() => {
-      show.value = true
-    })
-    return () => (show.value && slots.default ? slots.default() : null)
-  },
-})
+export const ClientOnly = _

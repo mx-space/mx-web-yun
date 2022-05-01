@@ -30,8 +30,6 @@ export const useUniversalFetch = <T>(
           return Promise.reject(error)
         })
         .then((data) => {
-          console.log(data)
-
           hydrationKey && prefetchStore.setData(hydrationKey, data)
           dataRef.value = data
           return data

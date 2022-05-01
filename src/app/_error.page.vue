@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-
 const props = defineProps<{
   is404?: boolean
   onErrorHandled: Function
   error: Error
 }>()
-const router = useRouter()
+
 const returnHome = () => {
   props.onErrorHandled()
   location.href = '/'

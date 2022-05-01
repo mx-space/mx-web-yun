@@ -83,6 +83,7 @@ textarea {
   display: block;
   width: 100%;
   border-radius: 4px;
+  background-color: transparent;
   padding: 0.1rem 0.5rem;
 }
 

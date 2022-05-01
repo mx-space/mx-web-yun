@@ -8,7 +8,6 @@ const config = useThemeConfig()
 const url = useFullUrl()
 const store = usePostStore()
 const data = computed(() => store.currentPostData)
-
 </script>
 
 <template>
@@ -18,7 +17,7 @@ const data = computed(() => store.currentPostData)
         <slot name="header">
           <YunPostMeta :frontmatter="data" />
         </slot>
-        <router-view v-slot="{Component}">
+        <router-view v-slot="{ Component }">
           <Transition appear>
             <component :is="Component" />
           </Transition>

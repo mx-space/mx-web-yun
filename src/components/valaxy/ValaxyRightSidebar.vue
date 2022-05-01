@@ -10,7 +10,7 @@ const app = useAppStore()
 
 <template>
   <button
-    class="xl:hidden toc-btn shadow fixed yun-icon-btn z-350"
+    class="!xl:hidden toc-btn shadow fixed yun-icon-btn z-350"
     opacity="75"
     right="2"
     bottom="19"

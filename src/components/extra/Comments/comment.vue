@@ -39,7 +39,7 @@ const onImgError = (e: Event) => {
         </span>
       </p>
 
-      <p>
+      <p class="mt-2">
         {{ comment.text }}
       </p>
     </div>

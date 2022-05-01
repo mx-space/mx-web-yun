@@ -1,11 +1,5 @@
-<script lang="ts" setup>
-import { useAggregateData } from '~/composables/use-page-context'
-
-const showOverview = ref(true)
-</script>
-
 <template>
-  <div v-if="showOverview" :class="$slots.default && '-mt-4'">
+  <div :class="$slots.default && '-mt-4'">
     <YunOverview />
   </div>
 </template>

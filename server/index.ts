@@ -1,44 +1,35 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import fastify from 'fastify'
-import proxy from 'fastify-http-proxy'
-import { resolve } from 'path'
-import type { ViteDevServer } from 'vite'
-import { createPageRenderer } from 'vite-plugin-ssr'
+import { join } from 'path'
 
-import express from '@fastify/express'
+import compress from '@fastify/compress'
+import proxy from '@fastify/http-proxy'
 
 const isProduction = process.env.NODE_ENV === 'production'
 const isDev = !isProduction
-const root = resolve(__dirname, '../')
+
+const dist = '../dist'
+
+/** @type {import('../dist/client/ssr-manifest.json')} */
+const manifest = require(`${dist}/client/ssr-manifest.json`)
+
+// This is the server renderer we just built
+/** @type { import('../dist/server/main')} */
+const { default: renderPage } =
+  // @ts-expect-error
+  require(`${dist}/server`)
 
 startServer()
 
 async function startServer() {
   const app = fastify()
 
-  let viteDevServer: ViteDevServer
-  if (isProduction) {
-    app.register(require('fastify-compress'), { global: false })
-    app.register(require('fastify-static'), {
-      root: `${root}/dist/client`,
-      wildcard: false,
-    })
-  } else {
-    const vite = require('vite')
-    viteDevServer = await vite.createServer({
-      root,
-      server: { middlewareMode: 'ssr' },
-    })
-
-    await app.register(express)
-    app.use(viteDevServer.middlewares)
-  }
-
-  const renderPage = createPageRenderer({
-    // @ts-expect-error
-    viteDevServer,
-    isProduction,
-    root,
+  app.register(compress, { global: true })
+  const staticPlugin = require('@fastify/static')
+  app.register(staticPlugin, {
+    prefix: '/',
+    root: join(__dirname, `${dist}/client`),
+    wildcard: false,
   })
 
   app.register(proxy, {
@@ -55,22 +46,19 @@ async function startServer() {
   })
 
   app.get('*', async (req, res) => {
-    const url = req.raw.url as string
-
-    const pageContextInit = {
-      url,
-    }
-    const pageContext = await renderPage(pageContextInit)
-    const { httpResponse, errorWhileRendering } = pageContext
-    if (!httpResponse) {
-      res.send({
-        url,
-        error: errorWhileRendering,
+    const url = `${req.protocol}://${req.hostname}${req.raw.url}`
+    try {
+      const { html } = await renderPage(url, {
+        manifest,
+        preload: true,
+        req,
+        res,
       })
-      return
+
+      res.type('text/html').compress(html)
+    } catch (e) {
+      res.send('500')
     }
-    const { body, statusCode, contentType } = httpResponse
-    res.status(statusCode).type(contentType).send(body)
   })
 
   const port = process.env.PORT || 4859

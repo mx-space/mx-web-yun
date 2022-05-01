@@ -13,13 +13,15 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import type { UserConfig } from 'vite'
-import ssr from 'vite-plugin-ssr/plugin'
+import ssr from 'vite-ssr/plugin.js'
 
 import vueI18n from '@intlify/vite-plugin-vue-i18n'
 import presetIcons from '@unocss/preset-icons'
 import vue from '@vitejs/plugin-vue'
 
 import { createI18nPlugin } from './plugins/i18n'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const config: UserConfig = {
   resolve: {
@@ -28,10 +30,10 @@ const config: UserConfig = {
     },
   },
   plugins: [
+    ssr(),
     vue({
       reactivityTransform: true,
     }),
-    ssr(),
     Unocss({
       safelist: [
         ...'animate-fade-in m-auto text-left'.split(' '),
@@ -173,21 +175,20 @@ const config: UserConfig = {
     __VUE_OPTIONS_API__: false,
   },
   server: {
-    // proxy: {
-    //   '/api': {
-    //     target: isDev
-    //       ? 'http://api.innei.ren/v2'
-    //       : 'http://localhost:2333/api/v2',
-    //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/api/, ''),
-    //   },
-    //   '/socket.io': {
-    //     target: 'http://localhost:2333/socket.io',
-    //     ws: true,
-    //     ignorePath: true,
-    //     rewrite: (path) => path.replace(/^\/socket\.io/, ''),
-    //   },
-    // },
+    port: 4859,
+    proxy: {
+      '/api': {
+        target: 'http://api.innei.ren/v2',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/socket.io': {
+        target: 'http://localhost:2333/socket.io',
+        ws: true,
+        ignorePath: true,
+        rewrite: (path) => path.replace(/^\/socket\.io/, ''),
+      },
+    },
   },
 }
 

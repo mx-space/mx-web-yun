@@ -1,10 +1,13 @@
 <script lang="ts" setup>
+import { useAppStore } from '~/stores/app'
 import { usePostStore } from '~/stores/post'
 
 const postStore = usePostStore()
 const frontmatter = computed(() => postStore.currentPostData)
 
 const title = computed(() => frontmatter.value?.title || '')
+const appStore = useAppStore()
+appStore.toggleSidebar(true)
 </script>
 
 <template>
@@ -36,17 +39,7 @@ const title = computed(() => frontmatter.value?.title || '')
 
       <slot :frontmatter="frontmatter" />
 
-      <slot name="nav">
-        <!--       TODO post nav bar-->
-      </slot>
-
-      <!--      TODO comment-->
-      <!--      <slot v-if="frontmatter.comment !== false" name="comment">-->
-      <!--        <YunCard w="full" p="4" class="comment sm:p-6 lg:px-12 xl:px-16" :class="frontmatter.nav === false ? 'mt-4' : 0">-->
-      <!--          <YunWaline v-if="config.comment.waline.enable" />-->
-      <!--          <YunTwikoo v-if="config.comment.twikoo.enable" />-->
-      <!--        </YunCard>-->
-      <!--      </slot>-->
+      <slot name="nav"> </slot>
 
       <ValaxyFooter>
         <slot name="footer" />

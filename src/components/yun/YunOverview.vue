@@ -25,7 +25,7 @@ const avatar = user.avatar
           {{ user.name }}
         </a>
       </div>
-      <router-link to="/about/site" class="site-name">
+      <router-link to="/about" class="site-name">
         {{ aggregateData.seo.title }}
       </router-link>
 

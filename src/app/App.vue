@@ -2,17 +2,13 @@
 import { RequestError } from '@mx-space/api-client'
 import { useHead } from '@vueuse/head'
 
-import { providePageProps } from '~/composables/use-page-context'
+import { useAggregateData } from '~/composables'
 
 import ErrorPage from './_error.page.vue'
 import { useGlobalState } from './state'
-import type { PageProps } from './types'
 
-const props = defineProps<{ pageProps: PageProps }>()
-
-providePageProps(props.pageProps)
-
-const seo = props.pageProps.aggregateData.seo
+const state = useAggregateData()
+const seo = state.seo
 useHead({
   title: seo.title,
   meta: [{ name: 'description', content: seo.description }],
@@ -21,6 +17,10 @@ useHead({
 const _error = ref<Error>()
 
 const globalState = useGlobalState()
+
+onMounted(() => {
+  globalState.setHydrate()
+})
 
 const error = computed(
   () => _error.value || (globalState.renderError.value as any as Error),
