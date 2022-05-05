@@ -40,7 +40,7 @@ export default viteSSR(
   async ({
     app,
     initialState,
-    // router,
+    router,
     // url,
     // isClient,
     // initialRoute,
@@ -58,10 +58,10 @@ export default viteSSR(
     }
     initialState.pageProps = pageProps
     // app.component(ClientOnly.name, ClientOnly)
-    // router.beforeEach((to, from) => {
-    //   if (to.path !== from.path && !import.meta.env.SSR)
-    //     window.scrollTo({ top: 0, behavior: 'smooth' })
-    // })
+    router.beforeEach((to, from) => {
+      if (to.path !== from.path && !import.meta.env.SSR)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
     return { head }
   },
 )

@@ -5,6 +5,12 @@ import { useAppStore } from '~/stores/app'
 const app = useAppStore()
 
 const isHome = useLayout('home')
+
+const transitionClass = ref(false)
+
+onMounted(() => {
+  transitionClass.value = true
+})
 </script>
 
 <template>
@@ -23,6 +29,7 @@ const isHome = useLayout('home')
       'sidebar',
       app.isSidebarOpen && 'open',
       !isHome && 'md:translate-x-0',
+      transitionClass && 'transform-transition',
     ]"
   >
     <slot />

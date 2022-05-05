@@ -5,8 +5,7 @@ import { join } from 'path'
 import compress from '@fastify/compress'
 import proxy from '@fastify/http-proxy'
 
-const isProduction = process.env.NODE_ENV === 'production'
-const isDev = !isProduction
+import { apiBase } from './constant'
 
 const dist = '../dist'
 
@@ -32,9 +31,7 @@ async function startServer() {
 
   app.register(proxy, {
     prefix: '/api',
-    upstream: isDev
-      ? 'https://api.innei.ren/v2/'
-      : 'http://localhost:2333/api/v2/',
+    upstream: apiBase,
   })
 
   app.register(proxy, {
@@ -42,6 +39,8 @@ async function startServer() {
     upstream: 'http://localhost:2333/socket.io',
     websocket: true,
   })
+
+  app.get('/feed', require('./api/feed').default)
 
   app.get('*', async (req, res) => {
     const url = `${req.protocol}://${req.hostname}${req.raw.url}`

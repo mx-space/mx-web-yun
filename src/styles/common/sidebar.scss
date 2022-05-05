@@ -23,10 +23,13 @@
 
   transform: translateX(-100%);
   transition: box-shadow var(--yun-transition-duration),
-    background-color var(--yun-transition-duration), opacity 0.25s,
-    transform var(--yun-transition-duration) cubic-bezier(0.19, 1, 0.22, 1) !important;
+    background-color var(--yun-transition-duration), opacity 0.25s;
 
   &.open {
     transform: translateX(0);
+  }
+
+  &.transform-transition {
+    transition: transform var(--yun-transition-duration) cubic-bezier(0.19, 1, 0.22, 1) !important;;
   }
 }
