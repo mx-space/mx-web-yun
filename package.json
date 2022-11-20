@@ -23,7 +23,7 @@
   "dependencies": {
     "@ctrl/tinycolor": "3.4.1",
     "@fastify/compress": "5.0.0",
-    "@fastify/http-proxy": "7.0.0",
+    "@fastify/http-proxy": "7.2.0",
     "@fastify/static": "5.0.0",
     "@iconify-json/ant-design": "^1.1.1",
     "@iconify-json/ri": "1.1.1",
