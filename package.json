@@ -72,7 +72,7 @@
     "@types/markdown-it": "12.2.3",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@unocss/preset-icons": "0.32.1",
-    "@unocss/preset-wind": "0.32.1",
+    "@unocss/preset-wind": "0.46.5",
     "@unocss/reset": "0.32.1",
     "eslint": "8.14.0",
     "prettier": "2.6.2",
