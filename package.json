@@ -77,7 +77,7 @@
     "eslint": "8.14.0",
     "prettier": "2.6.2",
     "sass": "1.51.0",
-    "unocss": "0.32.1",
+    "unocss": "0.46.5",
     "unplugin-auto-import": "0.7.1",
     "unplugin-icons": "0.14.1",
     "unplugin-vue-components": "0.19.3",
